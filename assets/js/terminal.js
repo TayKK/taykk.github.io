@@ -1,5 +1,5 @@
 /**
- * Interactive SecOps CLI Terminal Emulator: keng-cli v2.4
+ * Interactive SecOps CLI Terminal: kk-cli v2.5
  * Reads dynamically from window.PORTFOLIO_DATA
  */
 
@@ -8,29 +8,29 @@
     const data = window.PORTFOLIO_DATA || {};
     const p = data.profile || {};
     const certs = data.certifications || [];
-    const domains = data.domains || [];
     const journey = data.journey || [];
     const research = data.research || {};
+    const work = data.workExperience || [];
+    const edu = data.education || [];
 
     return {
-      help: `Available SecOps commands:
+      help: `Available commands in kk-cli:
   help          - Display this command manual
   about         - Overview of Kai Keng TAY
   journey       - Trace evolution from Blue Teamer to Holistic Practitioner
-  research      - Details on published paper (BinImg2Vec / ICAIC 2022)
-  certs         - List verified industry certifications & credentials (${certs.length} active)
-  skills        - Query technical & domain competencies
-  ai-sec        - AI Security, Threat Modeling & ISO 42001 perspective
-  contact       - Get direct LinkedIn & GitHub connectivity
-  hire          - Check role alignment & hiring readiness
+  research      - Details on published research (BinImg2Vec / ICAIC 2022)
+  certs         - List all 20 verified industry credentials (by category & validity)
+  work          - Professional work experience (Ensign InfoSecurity, RSAF)
+  edu           - Education & academic credentials (SUTD, SIT, SP)
+  contact       - Direct connectivity protocols (LinkedIn, GitHub)
   whoami        - Print session telemetry
   clear         - Clear terminal display buffer`,
 
-      about: `[PROFILE DOSSIER: ${p.name || 'KAI KENG TAY'}]
+      about: `[DOSSIER: ${p.name || 'KAI KENG TAY'}]
 --------------------------------------------------------------------------------
-Role Focus:     ${p.headline || 'Holistic Cybersecurity Practitioner & AI Security Researcher'}
+Role Focus:     ${p.headline || 'Cybersecurity Practitioner & AI Security Researcher'}
 Philosophy:     "${p.tagline || 'Never stop learning. Knowledge is power.'}"
-Status:         ${p.status || 'AVAILABLE FOR ROLES'} (${p.statusDetail || 'Open to opportunities'})
+Status:         ${p.status || 'ACTIVE PRACTITIONER'}
 Location:       ${p.location || 'Singapore'}
 Bio:            ${p.bio || ''}`,
 
@@ -40,7 +40,7 @@ Bio:            ${p.bio || ''}`,
   ${j.summary}
   Tags: ${j.tags.join(', ')}`).join('\n\n'),
 
-      research: `[RESEARCH SPOTLIGHT: ${research.title || 'BinImg2Vec'}]
+      research: `[FLAGSHIP RESEARCH: ${research.title || 'BinImg2Vec'}]
 --------------------------------------------------------------------------------
 Title:       ${research.title || 'BinImg2Vec'}
 Venue:       ${research.venue || ''}
@@ -52,59 +52,54 @@ Abstract:    ${research.abstract || ''}`,
 --------------------------------------------------------------------------------
 ` + formatCertsList(certs),
 
-      skills: `[COMPETENCY INVENTORY]
+      work: `[PROFESSIONAL WORK EXPERIENCE]
 --------------------------------------------------------------------------------
-` + domains.map((d, idx) => `${idx + 1}. ${d.title} [${d.category.toUpperCase()}]:
-   ${d.skills.map(s => '• ' + s).join('\n   ')}`).join('\n\n'),
+` + work.map(w => `• ${w.role}
+  Company:  ${w.company} (${w.location})
+  Period:   ${w.period}
+  Scope:    ${w.highlights.join(' ')}`).join('\n\n'),
 
-      "ai-sec": `[AI SECURITY & GOVERNANCE DOCTRINE]
+      edu: `[EDUCATION & ACADEMIC HONORS]
 --------------------------------------------------------------------------------
-As AI systems become core enterprise infrastructure, cybersecurity must defend both:
-  1. Traditional assets augmented by AI (e.g. BinImg2Vec for malware classification).
-  2. The AI supply chain itself (prompt injection, model poisoning, training data
-     exfiltration, adversarial robustness, and ISO/IEC 42001 governance).
-Kai Keng bridges algorithmic understanding with practical defensive engineering.`,
+` + edu.map(e => `• ${e.degree}
+  School:   ${e.institution}
+  Period:   ${e.period}
+  Grade:    ${e.grade}
+  Details:  ${e.details}`).join('\n\n'),
 
       contact: `[CONNECTIVITY PROTOCOLS]
 --------------------------------------------------------------------------------
 LinkedIn:  ${p.linkedinUrl || 'https://sg.linkedin.com/in/tay-kai-keng'}
 GitHub:    ${p.githubUrl || 'https://github.com/TayKK'}
-Location:  ${p.location || 'Singapore'}
-Recruiters: Connect directly via LinkedIn for dialogue and scheduling.`,
+Location:  ${p.location || 'Singapore'}`,
 
-      hire: `[TALENT RECRUITER QUERY RESULT]
---------------------------------------------------------------------------------
-Status:              ${p.status || 'Available for select opportunities'}
-Target Roles:        - Holistic Cybersecurity Practitioner / Security Engineer
-                     - AI Security Specialist / AI Governance Analyst
-                     - Cloud Security Engineer / DevSecOps Engineer
-                     - Detection & Threat Intelligence Engineer
-Location Preference: Singapore / Hybrid / Global Collaborative`,
-
-      whoami: `recruiter@taykk-cyber-dossier:~$ (Permissions: read-only | classification: PUBLIC)`
+      whoami: `recruiter@taykk-cyber-dossier:~$ (Session: kk-cli v2.5 | access: PUBLIC)`
     };
   }
 
   function formatCertsList(certs) {
-    const cloud = certs.filter(c => c.category === 'cloud');
-    const sec = certs.filter(c => c.category === 'security');
-    const ai = certs.filter(c => c.category === 'ai');
+    const proctored = certs.filter(c => c.category === 'proctored');
+    const online = certs.filter(c => c.category === 'online');
+    const course = certs.filter(c => c.category === 'course');
 
     let out = '';
-    if (cloud.length > 0) {
-      out += '[CLOUD & INFRASTRUCTURE]\n';
-      cloud.forEach(c => out += `  • ${c.title} (${c.org}) — [${c.badgeTag || 'VERIFIED'}]\n`);
-      out += '\n';
-    }
-    if (sec.length > 0) {
-      out += '[SECURITY, DEFENSE & APPSEC]\n';
-      sec.forEach(c => out += `  • ${c.title} (${c.org}) — [${c.badgeTag || 'VERIFIED'}]\n`);
-      out += '\n';
-    }
-    if (ai.length > 0) {
-      out += '[AI SECURITY & GOVERNANCE]\n';
-      ai.forEach(c => out += `  • ${c.title} (${c.org}) — [${c.badgeTag || 'VERIFIED'}]\n`);
-    }
+    out += `1. PROCTORED INDUSTRY CERTIFICATIONS (${proctored.length})\n`;
+    proctored.forEach(c => {
+      const exp = c.expires === 'No Expiration' ? 'Permanent' : `${c.status.toUpperCase()}: ${c.expires}`;
+      out += `  • ${c.title} [${c.issuer}] — (${exp})\n`;
+    });
+
+    out += `\n2. ONLINE / ASSESSMENT-BASED CERTIFICATIONS (${online.length})\n`;
+    online.forEach(c => {
+      const exp = c.expires === 'No Expiration' ? 'Permanent' : `${c.status.toUpperCase()}: ${c.expires}`;
+      out += `  • ${c.title} [${c.issuer}] — (${exp})\n`;
+    });
+
+    out += `\n3. COURSE CERTIFICATIONS & SPECIALIZATIONS (${course.length})\n`;
+    course.forEach(c => {
+      out += `  • ${c.title} [${c.issuer}] — (Issued: ${c.issued})\n`;
+    });
+
     return out.trim();
   }
 
@@ -117,7 +112,7 @@ Location Preference: Singapore / Hybrid / Global Collaborative`,
     if (!input || !output) return;
 
     // Welcome banner
-    printLine(`keng-cli v2.4 (x86_64-taykk-cyber) - Type 'help' for command list or click pills.`, "system");
+    printLine(`kk-cli v2.5 (x86_64-taykk-cyber) - Type 'help' for command list or click chips.`, "system");
 
     input.addEventListener("keydown", function (e) {
       if (e.key === "Enter") {
@@ -155,7 +150,6 @@ Location Preference: Singapore / Hybrid / Global Collaborative`,
         const cmd = btn.getAttribute("data-cli-cmd");
         if (cmd) {
           executeCommand(cmd);
-          // Scroll smoothly to terminal
           const termSection = document.getElementById("terminal");
           if (termSection) {
             termSection.scrollIntoView({ behavior: "smooth" });
@@ -173,7 +167,7 @@ Location Preference: Singapore / Hybrid / Global Collaborative`,
     if (matches.length === 1) {
       inputElem.value = matches[0];
     } else if (matches.length > 1) {
-      printLine(`Suggestions: ${matches.join("  ")}`, "cyan");
+      printLine(`Suggestions: ${matches.join("  ")}`, "accent");
     }
   }
 
@@ -182,7 +176,6 @@ Location Preference: Singapore / Hybrid / Global Collaborative`,
     const cmd = rawCmd.toLowerCase().trim();
     const commands = getCommands();
 
-    // Print Prompt line
     printLine(`user@taykk-secops:~$ ${rawCmd}`, "prompt");
 
     if (cmd === "clear") {
@@ -196,7 +189,6 @@ Location Preference: Singapore / Hybrid / Global Collaborative`,
       printLine(`command not found: "${rawCmd}". Type 'help' to inspect valid instructions.`, "error");
     }
 
-    // Auto-scroll to bottom of terminal
     const terminalBody = document.getElementById("terminal-body");
     if (terminalBody) {
       terminalBody.scrollTop = terminalBody.scrollHeight;
@@ -214,11 +206,11 @@ Location Preference: Singapore / Hybrid / Global Collaborative`,
       line.style.color = "#38bdf8";
       line.style.fontWeight = "600";
     } else if (type === "system") {
-      line.style.color = "#00f0ff";
+      line.style.color = "#38bdf8";
     } else if (type === "error") {
-      line.style.color = "#f43f5e";
-    } else if (type === "cyan") {
-      line.style.color = "#00f0ff";
+      line.style.color = "#f87171";
+    } else if (type === "accent") {
+      line.style.color = "#38bdf8";
     } else {
       line.style.color = "#cbd5e1";
     }
