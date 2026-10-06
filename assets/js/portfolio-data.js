@@ -4,10 +4,12 @@
  * ============================================================================
  * 
  * Centralized data store. Easily add, edit, or remove:
- * - Certifications (Proctored, Online, Course)
- * - Work Experience (Industry roles)
- * - Education & Honors (Academic history)
- * - Research Papers & Skills
+ * - Domain Competency Radar Data
+ * - Certifications (Proctored, Online, Course) with Levels & Domains
+ * - Work Career Progression (Milestones & Promotions)
+ * - Academic Progression (Degrees & Honors)
+ * 
+ * PRIVACY GUARANTEE: Contains zero personal contact PII (no emails, no phone numbers).
  */
 
 window.PORTFOLIO_DATA = {
@@ -23,6 +25,16 @@ window.PORTFOLIO_DATA = {
     githubUrl: "https://github.com/TayKK",
     bio: "Grounded in Blue Team operations, threat hunting, and digital forensics at Ensign InfoSecurity, I have expanded into a general cybersecurity practitioner and holistic AI security researcher—bridging enterprise defense, cloud-native infrastructure (GCP & Kubernetes), API security, and AI model governance (ISO/IEC 42001)."
   },
+
+  // Domain Competency Spider Web / Radar Data
+  competencyRadar: [
+    { domain: "DFIR & Threat Ops", score: 94, short: "DFIR", keyCreds: "GCFE • Incident Response Consultant" },
+    { domain: "AI Security & AIMS", score: 92, short: "AI-Sec", keyCreds: "BinImg2Vec • ISO 42001 • AWS AI • CLLMSP" },
+    { domain: "Cloud & Containers", score: 88, short: "Cloud", keyCreds: "Google Cloud ACE • KCNA • LFCA" },
+    { domain: "AppSec & API Defense", score: 85, short: "AppSec", keyCreds: "APIsec Certified • OWASP API Top 10" },
+    { domain: "Networks & Systems", score: 87, short: "Systems", keyCreds: "CCNA • Linux LFCA • Cyber-Physical" },
+    { domain: "GRC & Architecture", score: 84, short: "GRC", keyCreds: "ISO 42001 Lead • MS SC-900 • Maturity Reviews" }
+  ],
 
   // Evolution trajectory steps
   journey: [
@@ -77,20 +89,24 @@ window.PORTFOLIO_DATA = {
 
   /**
    * ==========================================================================
-   * CERTIFICATIONS & CREDENTIALS
-   * Categories:
-   * 1. "proctored" -> Certifications requiring proctoring (Pearson VUE, PSI, Kryterion, etc.)
-   * 2. "online"    -> Certifications completed online / assessment-based
-   * 3. "course"    -> Course Certifications & Specializations
+   * VERIFIED CERTIFICATIONS & ACCREDITATIONS (20 TOTAL)
+   * Enriched with:
+   * - category: 'proctored' | 'online' | 'course'
+   * - level: 'advanced' | 'intermediate' | 'foundational'
+   * - domain: 'dfir' | 'cloud' | 'ai' | 'appsec' | 'systems' | 'grc'
+   * - vendorLogo: logo icon key
    * ==========================================================================
    */
   certifications: [
-    // --- 1. PROCTORED CERTIFICATIONS ---
+    // --- (1) PROCTORED INDUSTRY CERTIFICATIONS ---
     {
       id: "gcfe",
       title: "GIAC Certified Forensic Examiner (GCFE)",
       issuer: "GIAC Certifications",
+      vendor: "giac",
       category: "proctored",
+      level: "advanced",
+      domain: "dfir",
       issued: "Jan 2023",
       expires: "Jan 2027",
       status: "active",
@@ -101,7 +117,10 @@ window.PORTFOLIO_DATA = {
       id: "gcp-ace",
       title: "Associate Cloud Engineer (ACE)",
       issuer: "Google Cloud",
+      vendor: "google",
       category: "proctored",
+      level: "intermediate",
+      domain: "cloud",
       issued: "Jan 2026",
       expires: "Jan 2029",
       status: "active",
@@ -112,7 +131,10 @@ window.PORTFOLIO_DATA = {
       id: "kcna",
       title: "Kubernetes and Cloud Native Associate (KCNA)",
       issuer: "The Linux Foundation & CNCF",
+      vendor: "linuxfoundation",
       category: "proctored",
+      level: "intermediate",
+      domain: "cloud",
       issued: "Aug 2025",
       expires: "Aug 2027",
       status: "active",
@@ -123,7 +145,10 @@ window.PORTFOLIO_DATA = {
       id: "lfca",
       title: "Linux Foundation Certified IT Associate (LFCA)",
       issuer: "The Linux Foundation",
+      vendor: "linuxfoundation",
       category: "proctored",
+      level: "foundational",
+      domain: "systems",
       issued: "Jul 2025",
       expires: "Jul 2027",
       status: "active",
@@ -134,7 +159,10 @@ window.PORTFOLIO_DATA = {
       id: "aws-ai",
       title: "AWS Certified AI Practitioner",
       issuer: "Amazon Web Services (AWS)",
+      vendor: "aws",
       category: "proctored",
+      level: "foundational",
+      domain: "ai",
       issued: "Sep 2026",
       expires: "Sep 2029",
       status: "active",
@@ -145,7 +173,10 @@ window.PORTFOLIO_DATA = {
       id: "gaicc-lead",
       title: "GAICC ISO/IEC 42001 Lead Implementer",
       issuer: "Global AI Certification Council (GAICC)",
+      vendor: "gaicc",
       category: "proctored",
+      level: "advanced",
+      domain: "ai",
       issued: "Jun 2026",
       expires: "Jun 2029",
       status: "active",
@@ -156,7 +187,10 @@ window.PORTFOLIO_DATA = {
       id: "isc2-cc",
       title: "Certified in Cybersecurity (CC)",
       issuer: "ISC2",
+      vendor: "isc2",
       category: "proctored",
+      level: "foundational",
+      domain: "systems",
       issued: "Mar 2024",
       expires: "Mar 2027",
       status: "active",
@@ -167,7 +201,10 @@ window.PORTFOLIO_DATA = {
       id: "ms-sci",
       title: "Microsoft Certified: Security, Compliance, and Identity Fundamentals (SC-900)",
       issuer: "Microsoft",
+      vendor: "microsoft",
       category: "proctored",
+      level: "foundational",
+      domain: "grc",
       issued: "Oct 2026",
       expires: "No Expiration",
       status: "active",
@@ -178,7 +215,10 @@ window.PORTFOLIO_DATA = {
       id: "ms-azure-fund",
       title: "Microsoft Certified: Azure Fundamentals (AZ-900)",
       issuer: "Microsoft",
+      vendor: "microsoft",
       category: "proctored",
+      level: "foundational",
+      domain: "cloud",
       issued: "Jun 2025",
       expires: "No Expiration",
       status: "active",
@@ -189,7 +229,10 @@ window.PORTFOLIO_DATA = {
       id: "ms-azure-ai",
       title: "Microsoft Certified: Azure AI Fundamentals (AI-900)",
       issuer: "Microsoft",
+      vendor: "microsoft",
       category: "proctored",
+      level: "foundational",
+      domain: "ai",
       issued: "May 2024",
       expires: "No Expiration",
       status: "active",
@@ -200,7 +243,10 @@ window.PORTFOLIO_DATA = {
       id: "aws-ccp",
       title: "AWS Certified Cloud Practitioner",
       issuer: "Amazon Web Services (AWS)",
+      vendor: "aws",
       category: "proctored",
+      level: "foundational",
+      domain: "cloud",
       issued: "Jan 2023",
       expires: "Jan 2026",
       status: "expired",
@@ -211,7 +257,10 @@ window.PORTFOLIO_DATA = {
       id: "ccna",
       title: "Cisco Certified Network Associate (CCNA)",
       issuer: "Cisco",
+      vendor: "cisco",
       category: "proctored",
+      level: "intermediate",
+      domain: "systems",
       issued: "Oct 2021",
       expires: "Oct 2024",
       status: "expired",
@@ -219,12 +268,15 @@ window.PORTFOLIO_DATA = {
       skills: ["Computer Networking", "Routing & Switching", "Network Security"]
     },
 
-    // --- 2. ONLINE / ASSESSMENT-BASED CERTIFICATIONS ---
+    // --- (2) ONLINE / ASSESSMENT-BASED CERTIFICATIONS ---
     {
       id: "apisec",
       title: "Certified API Security Analyst",
       issuer: "APIsec University",
+      vendor: "apisec",
       category: "online",
+      level: "intermediate",
+      domain: "appsec",
       issued: "Feb 2026",
       expires: "No Expiration",
       status: "active",
@@ -235,7 +287,10 @@ window.PORTFOLIO_DATA = {
       id: "cllmsp",
       title: "Certified LLM Security Professional (CLLMSP)",
       issuer: "Red Team Leaders",
+      vendor: "redteam",
       category: "online",
+      level: "advanced",
+      domain: "ai",
       issued: "Jun 2026",
       expires: "No Expiration",
       status: "active",
@@ -246,7 +301,10 @@ window.PORTFOLIO_DATA = {
       id: "ccep",
       title: "Certified Cybersecurity Educator Professional (CCEP)",
       issuer: "Red Team Leaders",
+      vendor: "redteam",
       category: "online",
+      level: "intermediate",
+      domain: "grc",
       issued: "Jun 2026",
       expires: "No Expiration",
       status: "active",
@@ -257,7 +315,10 @@ window.PORTFOLIO_DATA = {
       id: "proofpoint-dlp",
       title: "Proofpoint Certified DLP Specialist 2024",
       issuer: "Proofpoint",
+      vendor: "proofpoint",
       category: "online",
+      level: "intermediate",
+      domain: "appsec",
       issued: "Oct 2024",
       expires: "Oct 2025",
       status: "expired",
@@ -268,7 +329,10 @@ window.PORTFOLIO_DATA = {
       id: "opswat-cip",
       title: "Introduction to CIP (Critical Infrastructure Protection)",
       issuer: "OPSWAT Academy",
+      vendor: "opswat",
       category: "online",
+      level: "intermediate",
+      domain: "systems",
       issued: "Jun 2024",
       expires: "May 2025",
       status: "expired",
@@ -276,12 +340,15 @@ window.PORTFOLIO_DATA = {
       skills: ["Cyber-Physical Systems", "OT/ICS Security", "Infrastructure Defense"]
     },
 
-    // --- 3. COURSE CERTIFICATIONS & SPECIALIZATIONS ---
+    // --- (3) COURSE CERTIFICATIONS & SPECIALIZATIONS ---
     {
       id: "google-it-support",
       title: "Google IT Support Specialization",
       issuer: "Coursera / Google",
+      vendor: "coursera",
       category: "course",
+      level: "foundational",
+      domain: "systems",
       issued: "Aug 2023",
       expires: "No Expiration",
       status: "active",
@@ -292,7 +359,10 @@ window.PORTFOLIO_DATA = {
       id: "ntuc-ml",
       title: "Machine Learning & Advanced Analytics Using Python",
       issuer: "NTUC LearningHub",
+      vendor: "ntuc",
       category: "course",
+      level: "intermediate",
+      domain: "ai",
       issued: "Mar 2022",
       expires: "No Expiration",
       status: "active",
@@ -301,9 +371,12 @@ window.PORTFOLIO_DATA = {
     },
     {
       id: "basistech-autopsy",
-      title: "Autopsy & Cyber Triage DFIR Training - Basics & Hands-On",
+      title: "Autopsy & Cyber Triage DFIR Training",
       issuer: "BasisTech",
+      vendor: "basistech",
       category: "course",
+      level: "intermediate",
+      domain: "dfir",
       issued: "Dec 2020",
       expires: "No Expiration",
       status: "active",
@@ -312,86 +385,98 @@ window.PORTFOLIO_DATA = {
     }
   ],
 
-  // Professional Work Experience (Work is work)
-  workExperience: [
+  /**
+   * ==========================================================================
+   * PROFESSIONAL CAREER PROGRESSION LADDER (WORK)
+   * High-impact progression stepper (No text block descriptions)
+   * ==========================================================================
+   */
+  workProgression: [
     {
+      stage: "STEP 4",
+      badge: "▲ PROMOTION",
+      badgeType: "promotion",
+      role: "Cyber Hunt & Incident Response, Consultant",
       company: "Ensign InfoSecurity",
-      role: "Cyber Hunt and Incident Response, Consultant",
-      period: "Mar 2025 — Present",
       location: "Singapore (Hybrid)",
-      highlights: [
-        "Led complex threat hunting engagements, cyber investigations, and table-top exercise simulations.",
-        "Assisted in CyberSecurity Maturity Assessments and defensive architecture reviews.",
-        "Researched cyber-physical systems resilience and incident escalation playbooks."
-      ],
-      skills: ["Table-Top Exercise Simulation", "Cyber-Physical Systems", "Threat Hunting"]
+      period: "Mar 2025 — Present",
+      isCurrent: true,
+      tags: ["Table-Top Exercise Simulation", "Cyber-Physical Systems", "Threat Hunting Leadership"]
     },
     {
+      stage: "STEP 3",
+      badge: "▲ PROMOTION",
+      badgeType: "promotion",
+      role: "Cyber Hunt & Incident Response, Associate Consultant",
       company: "Ensign InfoSecurity",
-      role: "Cyber Hunt and Incident Response, Associate Consultant",
-      period: "Feb 2023 — Feb 2025",
       location: "Singapore (On-site)",
-      highlights: [
-        "Executed live cyber incident response triage, dead-box digital forensics, and root-cause analyses.",
-        "Conducted evidence collection and timeline reconstruction for enterprise security breaches.",
-        "Correlated telemetry across endpoint detection, firewalls, and cloud access logs."
-      ],
-      skills: ["Cybersecurity Incident Response", "Computer Forensics", "Malware Analysis"]
+      period: "Feb 2023 — Feb 2025",
+      isCurrent: false,
+      tags: ["Incident Response Triage", "Computer Forensics", "Breach Timeline Reconstruction"]
     },
     {
-      company: "Ensign InfoSecurity",
+      stage: "STEP 2",
+      badge: "● INDUSTRY ENTRY",
+      badgeType: "entry",
       role: "Security Engineer & Consultancy Training (Internship)",
-      period: "Jan 2022 — Dec 2022",
+      company: "Ensign InfoSecurity",
       location: "Singapore",
-      highlights: [
-        "Participated in live cyber investigations and assisted in cybersecurity maturity assessments.",
-        "Co-authored and published flagship research paper: BinImg2Vec (ICAIC 2022) with Ensign Labs.",
-        "Active member of Ensign Fight Club (MMA)."
-      ],
-      skills: ["Malware Classification", "Maturity Assessments", "Applied Research"]
+      period: "Jan 2022 — Dec 2022",
+      isCurrent: false,
+      tags: ["BinImg2Vec Co-Author", "Cyber Investigations", "Maturity Assessments"]
     },
     {
-      company: "Republic of Singapore Air Force (RSAF)",
+      stage: "STEP 1",
+      badge: "● SERVICE FOUNDATION",
+      badgeType: "service",
       role: "Air Operation Specialist (3rd Sergeant)",
-      period: "Oct 2016 — Oct 2018",
+      company: "Republic of Singapore Air Force (RSAF)",
       location: "Singapore & Brunei",
-      highlights: [
-        "Selected for high-readiness one-year detachment to Brunei.",
-        "Maintained tactical situational awareness and operational air defense workflows."
-      ],
-      skills: ["Operational Discipline", "Team Leadership", "Mission-Critical Systems"]
+      period: "Oct 2016 — Oct 2018",
+      isCurrent: false,
+      tags: ["One-Year Brunei Detachment", "Tactical Operations", "Operational Readiness"]
     }
   ],
 
-  // Education & Academic Honors (School is school)
-  education: [
+  /**
+   * ==========================================================================
+   * ACADEMIC PROGRESSION LADDER (EDUCATION)
+   * High-impact degree advancement stepper (No text block descriptions)
+   * ==========================================================================
+   */
+  educationProgression: [
     {
-      institution: "Singapore University of Technology and Design (SUTD)",
+      stage: "LEVEL 3",
+      badge: "▲ POSTGRADUATE SUMMIT",
+      badgeType: "degree",
       degree: "Master of Science (MS) in Security by Design",
+      institution: "Singapore University of Technology and Design (SUTD)",
       period: "Sep 2023 — Oct 2025",
-      grade: "Grade: 4.38 / 5.0",
-      details: "Advanced curriculum focused on Cyber-Physical Systems security, formal verification, threat modeling, and secure architecture by design.",
-      honors: ["Skills: Cyber-Physical Systems, Advanced Threat Modeling"]
+      achievement: "Grade: 4.38 / 5.0",
+      isHighest: true,
+      tags: ["Cyber-Physical Systems", "Formal Verification", "Secure Architecture"]
     },
     {
-      institution: "Singapore Institute of Technology (SIT)",
+      stage: "LEVEL 2",
+      badge: "▲ UNDERGRADUATE DEGREE",
+      badgeType: "degree",
       degree: "Bachelor of Engineering (B.Eng) in Information & Communications Technology (Information Security)",
+      institution: "Singapore Institute of Technology (SIT)",
       period: "Sep 2019 — Dec 2022",
-      grade: "Graduated with Distinction (Second Upper)",
-      details: "Specialized in applied information security, cryptography, systems defense, and network architecture. Participated in SIT MindSports (International Chess) Tournament 2021.",
-      honors: ["Graduated with Distinction", "SIT MindSports 2021"]
+      achievement: "Graduated with Distinction (Second Upper)",
+      isHighest: false,
+      tags: ["Graduated with Distinction", "SIT MindSports Chess Tournament 2021"]
     },
     {
-      institution: "Singapore Polytechnic (SP)",
+      stage: "LEVEL 1",
+      badge: "● DIPLOMA FOUNDATION",
+      badgeType: "diploma",
       degree: "Diploma in Computer Engineering (Network Security)",
+      institution: "Singapore Polytechnic (SP)",
       period: "2013 — 2016",
-      grade: "Silver Award — SP Engineering Show 2016",
-      details: "Comprehensive foundation in computer systems, networking protocols, hardware architecture, and defensive engineering. Active in Swimming Club (POL-ITE Swimming Competition 2014).",
-      honors: [
-        "Awarded Silver in SP Engineering Show 2016",
-        "Edusave Award (EAGLES) 2012",
-        "Edusave Certificate of Academic Achievement 2011"
-      ]
+      achievement: "Silver Award — SP Engineering Show 2016",
+      isHighest: false,
+      tags: ["SP Engineering Show 2016 (Silver)", "Edusave Award (EAGLES) 2012", "POL-ITE Swimming 2014"]
     }
   ]
 };

@@ -5,7 +5,9 @@
 
 (function () {
   let activeCategory = "all";
-  let activeStatusFilter = "all";
+  let activeLevel = "all";
+  let activeDomain = "all";
+  let activeStatus = "all";
 
   document.addEventListener("DOMContentLoaded", () => {
     renderDynamicContent();
@@ -21,8 +23,8 @@
 
     renderJourney(data.journey);
     renderCertifications(data.certifications);
-    renderWorkExperience(data.workExperience);
-    renderEducation(data.education);
+    renderWorkProgression(data.workProgression);
+    renderEducationProgression(data.educationProgression);
   }
 
   function renderJourney(journeyList) {
@@ -49,11 +51,13 @@
     const container = document.getElementById("certs-container");
     if (!container || !certsList) return;
 
-    // Filter by category and status
+    // Multi-criteria filtering
     const filtered = certsList.filter(c => {
       const matchCat = activeCategory === "all" || c.category === activeCategory;
-      const matchStatus = activeStatusFilter === "all" || c.status === activeStatusFilter;
-      return matchCat && matchStatus;
+      const matchLevel = activeLevel === "all" || c.level === activeLevel;
+      const matchDomain = activeDomain === "all" || c.domain === activeDomain;
+      const matchStatus = activeStatus === "all" || c.status === activeStatus;
+      return matchCat && matchLevel && matchDomain && matchStatus;
     });
 
     // Update Category Tab Counts
@@ -63,13 +67,13 @@
     const countCourse = certsList.filter(c => c.category === "course").length;
 
     updateTabCount('[data-cert-cat="all"]', `All (${countAll})`);
-    updateTabCount('[data-cert-cat="proctored"]', `(1) Proctored Certifications (${countProctored})`);
+    updateTabCount('[data-cert-cat="proctored"]', `(1) Proctored (${countProctored})`);
     updateTabCount('[data-cert-cat="online"]', `(2) Online Assessments (${countOnline})`);
-    updateTabCount('[data-cert-cat="course"]', `(3) Course Certifications (${countCourse})`);
+    updateTabCount('[data-cert-cat="course"]', `(3) Course Certs (${countCourse})`);
 
-    // Render Cert Cards
+    // Render Cards
     if (filtered.length === 0) {
-      container.innerHTML = `<div style="grid-column: 1/-1; padding: 2rem; text-align: center; color: var(--text-muted); font-family: var(--font-mono);">No certifications match this filter.</div>`;
+      container.innerHTML = `<div style="grid-column: 1/-1; padding: 2.5rem; text-align: center; color: var(--text-muted); font-family: var(--font-mono);">No certifications match the selected filter combination.</div>`;
       return;
     }
 
@@ -84,16 +88,29 @@
           ? `Expired: ${escapeHtml(c.expires)}` 
           : `Expires: ${escapeHtml(c.expires)}`;
 
+      const vendorLogoSvg = window.getVendorLogo ? window.getVendorLogo(c.vendor) : '';
+      const levelClass = c.level || 'intermediate';
+      const levelName = c.level === 'advanced' ? 'Advanced' : c.level === 'foundational' ? 'Foundational' : 'Intermediate';
+
       return `
         <div class="cert-card ${isExpired ? 'expired' : ''}">
           <div>
-            <div class="cert-top">
-              <span class="cert-issuer-badge">${escapeHtml(c.issuer)}</span>
-              <span class="status-badge ${statusClass}">
-                <span class="pulse-dot" style="background-color: currentColor; width: 6px; height: 6px;"></span>
-                ${statusLabel}
-              </span>
+            <div class="cert-header">
+              <div class="cert-vendor-box">
+                <div class="vendor-logo-wrapper" title="${escapeHtml(c.issuer)}">
+                  ${vendorLogoSvg}
+                </div>
+                <span class="cert-issuer-badge">${escapeHtml(c.issuer)}</span>
+              </div>
+              <div style="display: flex; gap: 0.35rem; align-items: center;">
+                <span class="level-badge ${levelClass}">${levelName}</span>
+                <span class="status-badge ${statusClass}">
+                  <span class="pulse-dot" style="background-color: currentColor; width: 6px; height: 6px;"></span>
+                  ${statusLabel}
+                </span>
+              </div>
             </div>
+
             <h3 class="cert-title">${escapeHtml(c.title)}</h3>
             <div class="cert-validity">
               <span>Issued: ${escapeHtml(c.issued)}</span>
@@ -102,6 +119,7 @@
               ${c.credentialId ? `<span>•</span><span style="color: var(--text-dim);">ID: ${escapeHtml(c.credentialId)}</span>` : ''}
             </div>
           </div>
+
           <div class="cert-skills">
             ${(c.skills || []).map(s => `<span class="tag-badge">${escapeHtml(s)}</span>`).join('')}
           </div>
@@ -115,53 +133,53 @@
     if (el) el.textContent = text;
   }
 
-  function renderWorkExperience(workList) {
-    const container = document.getElementById("work-container");
+  function renderWorkProgression(workList) {
+    const container = document.getElementById("work-progression-container");
     if (!container || !workList) return;
 
-    container.innerHTML = workList.map(item => `
-      <div class="timeline-card">
-        <div class="timeline-card-header">
-          <h4 class="timeline-card-title">${escapeHtml(item.role)}</h4>
-          <span class="timeline-period">${escapeHtml(item.period)}</span>
-        </div>
-        <div class="timeline-org">${escapeHtml(item.company)} — ${escapeHtml(item.location)}</div>
-        <ul class="timeline-bullets">
-          ${item.highlights.map(h => `<li>${escapeHtml(h)}</li>`).join('')}
-        </ul>
-        <div style="margin-top: 0.85rem; display: flex; flex-wrap: wrap; gap: 0.35rem;">
-          ${(item.skills || []).map(s => `<span class="tag-badge">${escapeHtml(s)}</span>`).join('')}
+    container.innerHTML = workList.map((item, idx) => `
+      <div class="progression-step ${item.isCurrent ? 'current' : ''}">
+        <div class="step-node">${item.stage.replace('STEP ', '')}</div>
+        <div class="step-card">
+          <div class="step-header">
+            <span class="step-badge ${item.badgeType}">${escapeHtml(item.badge)}</span>
+            <span class="step-period">${escapeHtml(item.period)}</span>
+          </div>
+          <h4 class="step-title">${escapeHtml(item.role)}</h4>
+          <div class="step-org">${escapeHtml(item.company)} — ${escapeHtml(item.location)}</div>
+          <div class="step-tags">
+            ${item.tags.map(t => `<span class="tag-badge">${escapeHtml(t)}</span>`).join('')}
+          </div>
         </div>
       </div>
     `).join('');
   }
 
-  function renderEducation(eduList) {
-    const container = document.getElementById("education-container");
+  function renderEducationProgression(eduList) {
+    const container = document.getElementById("education-progression-container");
     if (!container || !eduList) return;
 
-    container.innerHTML = eduList.map(item => `
-      <div class="timeline-card">
-        <div class="timeline-card-header">
-          <h4 class="timeline-card-title">${escapeHtml(item.degree)}</h4>
-          <span class="timeline-period">${escapeHtml(item.period)}</span>
-        </div>
-        <div class="timeline-org">${escapeHtml(item.institution)}</div>
-        <div style="color: var(--accent-primary); font-family: var(--font-mono); font-size: 0.82rem; margin-bottom: 0.5rem; font-weight: 600;">
-          ${escapeHtml(item.grade)}
-        </div>
-        <p style="font-size: 0.86rem; color: var(--text-body); margin-bottom: 0.75rem; line-height: 1.55;">
-          ${escapeHtml(item.details)}
-        </p>
-        <div style="display: flex; flex-wrap: wrap; gap: 0.35rem;">
-          ${(item.honors || []).map(h => `<span class="tag-badge">${escapeHtml(h)}</span>`).join('')}
+    container.innerHTML = eduList.map((item, idx) => `
+      <div class="progression-step ${item.isHighest ? 'highest' : ''}">
+        <div class="step-node">${item.stage.replace('LEVEL ', '')}</div>
+        <div class="step-card">
+          <div class="step-header">
+            <span class="step-badge ${item.badgeType}">${escapeHtml(item.badge)}</span>
+            <span class="step-period">${escapeHtml(item.period)}</span>
+          </div>
+          <h4 class="step-title">${escapeHtml(item.degree)}</h4>
+          <div class="step-org">${escapeHtml(item.institution)}</div>
+          <div class="step-grade">${escapeHtml(item.achievement)}</div>
+          <div class="step-tags">
+            ${item.tags.map(t => `<span class="tag-badge">${escapeHtml(t)}</span>`).join('')}
+          </div>
         </div>
       </div>
     `).join('');
   }
 
   function initCertFilters() {
-    // Category tabs: All, Proctored, Online, Course
+    // Tier tabs: All, Proctored, Online, Course
     const catTabs = document.querySelectorAll("[data-cert-cat]");
     catTabs.forEach(tab => {
       tab.addEventListener("click", () => {
@@ -172,13 +190,31 @@
       });
     });
 
-    // Status filter buttons: All, Active, Expired
+    // Level Select Dropdown
+    const levelSelect = document.getElementById("filter-cert-level");
+    if (levelSelect) {
+      levelSelect.addEventListener("change", (e) => {
+        activeLevel = e.target.value;
+        renderCertifications(window.PORTFOLIO_DATA.certifications);
+      });
+    }
+
+    // Domain Select Dropdown
+    const domainSelect = document.getElementById("filter-cert-domain");
+    if (domainSelect) {
+      domainSelect.addEventListener("change", (e) => {
+        activeDomain = e.target.value;
+        renderCertifications(window.PORTFOLIO_DATA.certifications);
+      });
+    }
+
+    // Status Buttons (All, Active, Expired)
     const statusBtns = document.querySelectorAll("[data-cert-status]");
     statusBtns.forEach(btn => {
       btn.addEventListener("click", () => {
         statusBtns.forEach(b => b.classList.remove("active"));
         btn.classList.add("active");
-        activeStatusFilter = btn.getAttribute("data-cert-status");
+        activeStatus = btn.getAttribute("data-cert-status");
         renderCertifications(window.PORTFOLIO_DATA.certifications);
       });
     });

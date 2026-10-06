@@ -15,7 +15,7 @@
   <meta property="og:url" content="https://taykk.github.io/">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Kai Keng TAY | Cybersecurity &amp; AI Security Dossier">
-  <meta name="twitter:description" content="Explore verified credentials, BinImg2Vec malware research, professional experience, and interactive kk-cli terminal.">
+  <meta name="twitter:description" content="Explore verified credentials, BinImg2Vec malware research, career progression ladder, and interactive kk-cli terminal.">
 
   <!-- Favicon -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛡️</text></svg>">
@@ -38,7 +38,7 @@
           <li><a href="#journey">Journey</a></li>
           <li><a href="#research">Research</a></li>
           <li><a href="#certs">Certifications</a></li>
-          <li><a href="#background">Experience &amp; Education</a></li>
+          <li><a href="#progression">Progression</a></li>
           <li><a href="#terminal">kk-cli</a></li>
           <li><a href="#connect">Connect</a></li>
         </ul>
@@ -57,7 +57,7 @@
     </div>
   </header>
 
-  <!-- Hero Section -->
+  <!-- Hero Section & Spider Web Radar -->
   <section id="hero" class="hero-section">
     <div class="container hero-grid">
       <div class="hero-content">
@@ -91,18 +91,18 @@
             <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
             Research Paper (BinImg2Vec)
           </a>
-          <a href="#background" class="btn btn-secondary">
-            Experience &amp; Education
+          <a href="#progression" class="btn btn-secondary">
+            Progression Ladder
           </a>
         </div>
       </div>
 
-      <!-- Telemetry Box -->
+      <!-- Spider Web Competency Radar Box -->
       <div class="telemetry-card">
         <div class="telemetry-header">
           <div class="telemetry-title">
             <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-            <span>PROFILE TELEMETRY &amp; METRICS</span>
+            <span>DOMAIN COMPETENCY RADAR</span>
           </div>
           <div class="window-dots">
             <span class="window-dot"></span>
@@ -111,31 +111,9 @@
           </div>
         </div>
 
-        <div class="spec-list">
-          <div class="spec-row">
-            <span class="spec-key">PRIMARY TRACK</span>
-            <span class="spec-val accent">Cybersecurity &amp; AI Security</span>
-          </div>
-          <div class="spec-row">
-            <span class="spec-key">INDUSTRY ROLE</span>
-            <span class="spec-val">Ensign InfoSecurity (Consultant)</span>
-          </div>
-          <div class="spec-row">
-            <span class="spec-key">KEY CREDENTIALS</span>
-            <span class="spec-val">GCFE • Google ACE • KCNA • LFCA</span>
-          </div>
-          <div class="spec-row">
-            <span class="spec-key">AI GOVERNANCE</span>
-            <span class="spec-val">GAICC ISO/IEC 42001 • AWS AI</span>
-          </div>
-          <div class="spec-row">
-            <span class="spec-key">ACADEMICS</span>
-            <span class="spec-val">SUTD (M.Sc) • SIT (B.Eng Distinction)</span>
-          </div>
-          <div class="spec-row">
-            <span class="spec-key">TOTAL CERTS</span>
-            <span class="spec-val accent">20 Industry Credentials</span>
-          </div>
+        <!-- Spider Web Radar SVG Canvas -->
+        <div class="radar-wrapper" id="radar-chart-container">
+          <!-- Dynamically populated from assets/js/radar-chart.js -->
         </div>
 
         <div class="telemetry-quick-cli">
@@ -143,7 +121,7 @@
             QUICK kk-cli SHORTCUTS:
           </div>
           <div class="cli-pill-group">
-            <button class="cli-chip" data-cli-cmd="about">&gt; about</button>
+            <button class="cli-chip" data-cli-cmd="radar">&gt; radar</button>
             <button class="cli-chip" data-cli-cmd="certs">&gt; certs</button>
             <button class="cli-chip" data-cli-cmd="work">&gt; work</button>
             <button class="cli-chip" data-cli-cmd="edu">&gt; edu</button>
@@ -279,14 +257,14 @@
     </div>
   </section>
 
-  <!-- Verified Certifications Showcase -->
+  <!-- Verified Certifications Showcase (Tier Tabs + Multi-Filter Bar) -->
   <section id="certs" class="section">
     <div class="container">
       <div class="section-head">
         <div class="section-tag">Credentials &amp; Accreditations</div>
         <h2 class="section-title">Professional Certifications (20)</h2>
         <p class="section-description">
-          Categorized across proctored industry examinations, online evaluations, and course specializations. All certifications—active and historically achieved—are recorded with full validity periods.
+          Categorized across proctored examinations, online assessments, and course specializations with official vendor logos, difficulty levels, and validity periods.
         </p>
       </div>
 
@@ -298,12 +276,42 @@
         <button class="tier-tab" data-cert-cat="course">(3) Course Certifications (3)</button>
       </div>
 
-      <!-- Status Sub-filters -->
-      <div class="cert-status-filter">
-        <span style="font-family: var(--font-mono); font-size: 0.76rem; color: var(--text-dim); margin-right: 0.4rem;">Status Filter:</span>
-        <button class="status-filter-btn active" data-cert-status="all">All Statuses</button>
-        <button class="status-filter-btn" data-cert-status="active">Active Only</button>
-        <button class="status-filter-btn" data-cert-status="expired">Expired Only</button>
+      <!-- Multi-Filter Controls Bar -->
+      <div class="filter-controls-bar">
+        <!-- Domain Filter -->
+        <div class="filter-group">
+          <label class="filter-group-label" for="filter-cert-domain">Domain:</label>
+          <select id="filter-cert-domain" class="filter-select">
+            <option value="all">All Domains</option>
+            <option value="dfir">DFIR &amp; Forensics</option>
+            <option value="cloud">Cloud &amp; Containers</option>
+            <option value="ai">AI Security &amp; AIMS</option>
+            <option value="appsec">AppSec &amp; API</option>
+            <option value="systems">Systems &amp; Networks</option>
+            <option value="grc">GRC &amp; Governance</option>
+          </select>
+        </div>
+
+        <!-- Level Filter -->
+        <div class="filter-group">
+          <label class="filter-group-label" for="filter-cert-level">Level:</label>
+          <select id="filter-cert-level" class="filter-select">
+            <option value="all">All Levels</option>
+            <option value="advanced">Advanced / Professional</option>
+            <option value="intermediate">Intermediate / Associate</option>
+            <option value="foundational">Foundational / Practitioner</option>
+          </select>
+        </div>
+
+        <!-- Status Filter -->
+        <div class="filter-group">
+          <label class="filter-group-label">Status:</label>
+          <div class="status-filter-pills">
+            <button class="status-filter-btn active" data-cert-status="all">All</button>
+            <button class="status-filter-btn" data-cert-status="active">Active Only</button>
+            <button class="status-filter-btn" data-cert-status="expired">Expired Only</button>
+          </div>
+        </div>
       </div>
 
       <!-- Dynamically populated from assets/js/portfolio-data.js -->
@@ -311,36 +319,42 @@
     </div>
   </section>
 
-  <!-- Separated Work Experience and Education (Work vs School) -->
-  <section id="background" class="section">
+  <!-- Career & Academic Progression Ladders (Work vs School) -->
+  <section id="progression" class="section">
     <div class="container">
       <div class="section-head">
-        <div class="section-tag">Career &amp; Academics</div>
-        <h2 class="section-title">Professional Background &amp; Education</h2>
+        <div class="section-tag">Ascent &amp; Milestones</div>
+        <h2 class="section-title">Career &amp; Academic Progression</h2>
         <p class="section-description">
-          Clear separation between industry cybersecurity roles and formal academic degrees.
+          A visual record of upward trajectory—from military discipline and polytechnic fundamentals to senior incident response consulting and master's degree research.
         </p>
       </div>
 
       <div class="split-sections-grid">
-        <!-- Work Experience Column -->
+        <!-- Work Experience Ladder -->
         <div>
           <div class="sub-section-head">
-            <span class="sub-section-icon">💼</span>
-            <h3 class="sub-section-title">Work Experience</h3>
+            <div class="sub-section-title">
+              <span>💼</span>
+              <span>Work Progression</span>
+            </div>
+            <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-primary);">CAREER ASCENT</span>
           </div>
-          <div class="timeline-list" id="work-container">
+          <div class="progression-ladder" id="work-progression-container">
             <!-- Dynamically populated from assets/js/portfolio-data.js -->
           </div>
         </div>
 
-        <!-- Education & Academics Column -->
+        <!-- Education Progression Ladder -->
         <div>
           <div class="sub-section-head">
-            <span class="sub-section-icon">🎓</span>
-            <h3 class="sub-section-title">Education &amp; Academic Honors</h3>
+            <div class="sub-section-title">
+              <span>🎓</span>
+              <span>Academic Progression</span>
+            </div>
+            <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--status-active);">DEGREE ADVANCEMENT</span>
           </div>
-          <div class="timeline-list" id="education-container">
+          <div class="progression-ladder" id="education-progression-container">
             <!-- Dynamically populated from assets/js/portfolio-data.js -->
           </div>
         </div>
@@ -363,7 +377,7 @@
         <div class="terminal-titlebar">
           <div class="terminal-tab-info">
             <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-            <span>kk-cli — secops@taykk.io: ~ (bash)</span>
+            <span>kk-cli — taykk-secops: ~ (bash)</span>
           </div>
           <div class="window-dots">
             <span class="window-dot"></span>
@@ -377,7 +391,7 @@
 
           <div class="terminal-input-row">
             <span class="terminal-prompt">user@taykk-secops:~$</span>
-            <input type="text" id="terminal-input" class="terminal-input" autofocus autocomplete="off" spellcheck="false" placeholder="type 'help', 'certs', 'work', 'edu'...">
+            <input type="text" id="terminal-input" class="terminal-input" autofocus autocomplete="off" spellcheck="false" placeholder="type 'help', 'radar', 'certs', 'work', 'edu'...">
           </div>
         </div>
       </div>
@@ -385,11 +399,11 @@
       <div style="margin-top: 1rem; display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center;">
         <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-dim);">Suggested Queries:</span>
         <button class="cli-chip" data-cli-cmd="help">help</button>
+        <button class="cli-chip" data-cli-cmd="radar">radar</button>
         <button class="cli-chip" data-cli-cmd="certs">certs</button>
         <button class="cli-chip" data-cli-cmd="work">work</button>
         <button class="cli-chip" data-cli-cmd="edu">edu</button>
         <button class="cli-chip" data-cli-cmd="research">research</button>
-        <button class="cli-chip" data-cli-cmd="journey">journey</button>
         <button class="cli-chip" data-cli-cmd="clear">clear</button>
       </div>
     </div>
@@ -401,7 +415,7 @@
       <div class="connect-card">
         <h2 class="connect-title">Ready to Connect</h2>
         <p class="connect-desc">
-          Interested in discussing <strong>Cybersecurity Operations, Incident Response, Cloud Security, or AI Model Governance</strong>? Reach out via LinkedIn or GitHub.
+          Interested in discussing <strong>Cybersecurity Operations, Incident Response, Cloud Security, or AI Model Governance</strong>? Reach out via LinkedIn or inspect repositories on GitHub.
         </p>
 
         <div class="connect-links">
@@ -437,6 +451,8 @@
 
   <!-- Scripts -->
   <script src="assets/js/portfolio-data.js"></script>
+  <script src="assets/js/vendor-logos.js"></script>
+  <script src="assets/js/radar-chart.js"></script>
   <script src="assets/js/binimg2vec-demo.js"></script>
   <script src="assets/js/terminal.js"></script>
   <script src="assets/js/main.js"></script>

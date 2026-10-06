@@ -1,6 +1,7 @@
 /**
  * Interactive SecOps CLI Terminal: kk-cli v2.5
  * Reads dynamically from window.PORTFOLIO_DATA
+ * PRIVACY GUARANTEED: Contains zero PII (no personal email or phone numbers).
  */
 
 (function () {
@@ -10,19 +11,20 @@
     const certs = data.certifications || [];
     const journey = data.journey || [];
     const research = data.research || {};
-    const work = data.workExperience || [];
-    const edu = data.education || [];
+    const work = data.workProgression || [];
+    const edu = data.educationProgression || [];
 
     return {
       help: `Available commands in kk-cli:
   help          - Display this command manual
   about         - Overview of Kai Keng TAY
   journey       - Trace evolution from Blue Teamer to Holistic Practitioner
+  radar         - Print cyber domain competency scores
   research      - Details on published research (BinImg2Vec / ICAIC 2022)
   certs         - List all 20 verified industry credentials (by category & validity)
-  work          - Professional work experience (Ensign InfoSecurity, RSAF)
-  edu           - Education & academic credentials (SUTD, SIT, SP)
-  contact       - Direct connectivity protocols (LinkedIn, GitHub)
+  work          - Career progression ladder (Ensign InfoSecurity, RSAF)
+  edu           - Academic degree progression (SUTD, SIT, SP)
+  contact       - Public connectivity channels (LinkedIn, GitHub)
   whoami        - Print session telemetry
   clear         - Clear terminal display buffer`,
 
@@ -40,6 +42,15 @@ Bio:            ${p.bio || ''}`,
   ${j.summary}
   Tags: ${j.tags.join(', ')}`).join('\n\n'),
 
+      radar: `[CYBER DOMAIN COMPETENCY RADAR]
+--------------------------------------------------------------------------------
+  • DFIR & Threat Ops:       94/100 (GCFE, Ensign IR Consultant)
+  • AI Security & AIMS:      92/100 (BinImg2Vec, ISO 42001, AWS AI)
+  • Cloud & Containers:      88/100 (Google Cloud ACE, KCNA, LFCA)
+  • AppSec & API Defense:    85/100 (APIsec Analyst, OWASP API Top 10)
+  • Networks & Systems:      87/100 (CCNA, Linux LFCA, Cyber-Physical)
+  • GRC & Architecture:      84/100 (ISO 42001 Lead, MS SC-900)`,
+
       research: `[FLAGSHIP RESEARCH: ${research.title || 'BinImg2Vec'}]
 --------------------------------------------------------------------------------
 Title:       ${research.title || 'BinImg2Vec'}
@@ -52,26 +63,27 @@ Abstract:    ${research.abstract || ''}`,
 --------------------------------------------------------------------------------
 ` + formatCertsList(certs),
 
-      work: `[PROFESSIONAL WORK EXPERIENCE]
+      work: `[CAREER PROGRESSION LADDER]
 --------------------------------------------------------------------------------
-` + work.map(w => `• ${w.role}
+` + work.map(w => `[${w.stage}] ${w.badge}: ${w.role}
   Company:  ${w.company} (${w.location})
   Period:   ${w.period}
-  Scope:    ${w.highlights.join(' ')}`).join('\n\n'),
+  Focus:    ${w.tags.join(' • ')}`).join('\n\n'),
 
-      edu: `[EDUCATION & ACADEMIC HONORS]
+      edu: `[ACADEMIC DEGREE ADVANCEMENT]
 --------------------------------------------------------------------------------
-` + edu.map(e => `• ${e.degree}
-  School:   ${e.institution}
-  Period:   ${e.period}
-  Grade:    ${e.grade}
-  Details:  ${e.details}`).join('\n\n'),
+` + edu.map(e => `[${e.stage}] ${e.badge}: ${e.degree}
+  School:       ${e.institution}
+  Period:       ${e.period}
+  Achievement:  ${e.achievement}
+  Focus:        ${e.tags.join(' • ')}`).join('\n\n'),
 
-      contact: `[CONNECTIVITY PROTOCOLS]
+      contact: `[PUBLIC CONNECTIVITY]
 --------------------------------------------------------------------------------
 LinkedIn:  ${p.linkedinUrl || 'https://sg.linkedin.com/in/tay-kai-keng'}
 GitHub:    ${p.githubUrl || 'https://github.com/TayKK'}
-Location:  ${p.location || 'Singapore'}`,
+Location:  ${p.location || 'Singapore'}
+Note:      To preserve privacy, direct communication is handled via LinkedIn.`,
 
       whoami: `recruiter@taykk-cyber-dossier:~$ (Session: kk-cli v2.5 | access: PUBLIC)`
     };
@@ -86,18 +98,18 @@ Location:  ${p.location || 'Singapore'}`,
     out += `1. PROCTORED INDUSTRY CERTIFICATIONS (${proctored.length})\n`;
     proctored.forEach(c => {
       const exp = c.expires === 'No Expiration' ? 'Permanent' : `${c.status.toUpperCase()}: ${c.expires}`;
-      out += `  • ${c.title} [${c.issuer}] — (${exp})\n`;
+      out += `  • [${(c.level || 'int').toUpperCase()}] ${c.title} (${c.issuer}) — ${exp}\n`;
     });
 
     out += `\n2. ONLINE / ASSESSMENT-BASED CERTIFICATIONS (${online.length})\n`;
     online.forEach(c => {
       const exp = c.expires === 'No Expiration' ? 'Permanent' : `${c.status.toUpperCase()}: ${c.expires}`;
-      out += `  • ${c.title} [${c.issuer}] — (${exp})\n`;
+      out += `  • [${(c.level || 'int').toUpperCase()}] ${c.title} (${c.issuer}) — ${exp}\n`;
     });
 
     out += `\n3. COURSE CERTIFICATIONS & SPECIALIZATIONS (${course.length})\n`;
     course.forEach(c => {
-      out += `  • ${c.title} [${c.issuer}] — (Issued: ${c.issued})\n`;
+      out += `  • [${(c.level || 'int').toUpperCase()}] ${c.title} (${c.issuer}) — (Issued: ${c.issued})\n`;
     });
 
     return out.trim();
@@ -111,7 +123,6 @@ Location:  ${p.location || 'Singapore'}`,
     const output = document.getElementById("terminal-output");
     if (!input || !output) return;
 
-    // Welcome banner
     printLine(`kk-cli v2.5 (x86_64-taykk-cyber) - Type 'help' for command list or click chips.`, "system");
 
     input.addEventListener("keydown", function (e) {
@@ -144,7 +155,6 @@ Location:  ${p.location || 'Singapore'}`,
       }
     });
 
-    // Wire quick command chips across the site
     document.querySelectorAll("[data-cli-cmd]").forEach(btn => {
       btn.addEventListener("click", () => {
         const cmd = btn.getAttribute("data-cli-cmd");

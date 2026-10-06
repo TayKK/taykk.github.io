@@ -5,7 +5,7 @@
 [![LinkedIn](https://img.shields.io/badge/Connect-LinkedIn-0A66C2?logo=linkedin)](https://sg.linkedin.com/in/tay-kai-keng)
 [![Research: BinImg2Vec](https://img.shields.io/badge/arXiv-2209.00782-B31B1B?logo=arxiv)](https://doi.org/10.48550/arXiv.2209.00782)
 
-Personal portfolio and interactive dossier of **Kai Keng TAY**, designed for recruiters, engineering leaders, and cybersecurity peers.
+Personal portfolio and interactive cybersecurity dossier of **Kai Keng TAY**, designed for technical recruiters, engineering leaders, and cybersecurity peers.
 
 ---
 
@@ -15,7 +15,18 @@ Personal portfolio and interactive dossier of **Kai Keng TAY**, designed for rec
 
 ---
 
-## 🔬 Featured Research
+## 🕸️ Cyber Domain Competency Radar
+Interactive spider web graph measuring domain readiness:
+- **DFIR & Threat Operations:** 94% (GCFE, Incident Response Consultant)
+- **AI Security & Model Governance (AIMS):** 92% (BinImg2Vec, ISO/IEC 42001 Lead, AWS AI, CLLMSP)
+- **Cloud & Cloud-Native Security:** 88% (Google Cloud ACE, Kubernetes KCNA, Linux LFCA)
+- **Networks & Systems Hardening:** 87% (CCNA, Linux LFCA, Cyber-Physical Systems)
+- **Application & API Security:** 85% (APIsec Certified Analyst, OWASP API Top 10)
+- **GRC & Enterprise Architecture:** 84% (ISO 42001 Lead Implementer, Microsoft SC-900)
+
+---
+
+## 🔬 Flagship Research Publication
 - **Title:** *BinImg2Vec: Augmenting Malware Binary Image Classification with Data2Vec*
 - **Conference:** 1st International Conference on AI in Cybersecurity (ICAIC), 2022
 - **Authors:** Kai Keng TAY, Lee Joon Sern, Chua Zong Fu
@@ -24,54 +35,55 @@ Personal portfolio and interactive dossier of **Kai Keng TAY**, designed for rec
 ---
 
 ## 📜 Verified Industry Credentials (20 Total)
+Filterable by **Tier** (Proctored, Online, Course), **Difficulty Level** (Advanced, Intermediate, Foundational), **Domain**, and **Validity Status** (Active, Expired).
 
-### (1) Proctored Industry Certifications
-- **GIAC Certifications:** GIAC Certified Forensic Examiner (GCFE) *(Active, Exp: Jan 2027)*
-- **Google Cloud:** Associate Cloud Engineer (ACE) *(Active, Exp: Jan 2029)*
-- **The Linux Foundation & CNCF:** Kubernetes and Cloud Native Associate (KCNA) *(Active, Exp: Aug 2027)*
-- **The Linux Foundation:** Linux Foundation Certified IT Associate (LFCA) *(Active, Exp: Jul 2027)*
-- **Amazon Web Services (AWS):** AWS Certified AI Practitioner *(Active, Exp: Sep 2029)*
-- **Global AI Certification Council (GAICC):** GAICC ISO/IEC 42001 Lead Implementer *(Active, Exp: Jun 2029)*
-- **ISC2:** Certified in Cybersecurity (CC) *(Active, Exp: Mar 2027)*
-- **Microsoft:** Security, Compliance, and Identity Fundamentals (SC-900) *(Permanent)*
-- **Microsoft:** Azure Fundamentals (AZ-900) *(Permanent)*
-- **Microsoft:** Azure AI Fundamentals (AI-900) *(Permanent)*
-- **Amazon Web Services (AWS):** AWS Certified Cloud Practitioner *(Expired: Jan 2026)*
-- **Cisco:** Cisco Certified Network Associate (CCNA) *(Expired: Oct 2024)*
+### (1) Proctored Industry Certifications (12)
+- **GIAC Certifications:** GIAC Certified Forensic Examiner (GCFE) — *Advanced (Active, Exp: Jan 2027)*
+- **Google Cloud:** Associate Cloud Engineer (ACE) — *Intermediate (Active, Exp: Jan 2029)*
+- **The Linux Foundation & CNCF:** Kubernetes and Cloud Native Associate (KCNA) — *Intermediate (Active, Exp: Aug 2027)*
+- **The Linux Foundation:** Linux Foundation Certified IT Associate (LFCA) — *Foundational (Active, Exp: Jul 2027)*
+- **Amazon Web Services (AWS):** AWS Certified AI Practitioner — *Foundational (Active, Exp: Sep 2029)*
+- **Global AI Certification Council (GAICC):** GAICC ISO/IEC 42001 Lead Implementer — *Advanced (Active, Exp: Jun 2029)*
+- **ISC2:** Certified in Cybersecurity (CC) — *Foundational (Active, Exp: Mar 2027)*
+- **Microsoft:** Security, Compliance, and Identity Fundamentals (SC-900) — *Foundational (Permanent)*
+- **Microsoft:** Azure Fundamentals (AZ-900) — *Foundational (Permanent)*
+- **Microsoft:** Azure AI Fundamentals (AI-900) — *Foundational (Permanent)*
+- **Amazon Web Services (AWS):** AWS Certified Cloud Practitioner — *Foundational (Expired: Jan 2026)*
+- **Cisco:** Cisco Certified Network Associate (CCNA) — *Intermediate (Expired: Oct 2024)*
 
-### (2) Online & Assessment-Based Certifications
-- **APIsec University:** Certified API Security Analyst *(Permanent)*
-- **Red Team Leaders:** Certified LLM Security Professional (CLLMSP) *(Permanent)*
-- **Red Team Leaders:** Certified Cybersecurity Educator Professional (CCEP) *(Permanent)*
-- **Proofpoint:** Proofpoint Certified DLP Specialist 2024 *(Expired: Oct 2025)*
-- **OPSWAT Academy:** Introduction to CIP (Critical Infrastructure Protection) *(Expired: May 2025)*
+### (2) Online & Assessment-Based Certifications (5)
+- **APIsec University:** Certified API Security Analyst — *Intermediate (Permanent)*
+- **Red Team Leaders:** Certified LLM Security Professional (CLLMSP) — *Advanced (Permanent)*
+- **Red Team Leaders:** Certified Cybersecurity Educator Professional (CCEP) — *Intermediate (Permanent)*
+- **Proofpoint:** Proofpoint Certified DLP Specialist 2024 — *Intermediate (Expired: Oct 2025)*
+- **OPSWAT Academy:** Introduction to CIP (Critical Infrastructure Protection) — *Intermediate (Expired: May 2025)*
 
-### (3) Course Certifications & Specializations
-- **Coursera / Google:** Google IT Support Specialization *(Aug 2023)*
-- **NTUC LearningHub:** Machine Learning & Advanced Analytics Using Python *(Mar 2022)*
-- **BasisTech:** Autopsy & Cyber Triage DFIR Training *(Dec 2020)*
+### (3) Course Certifications & Specializations (3)
+- **Coursera / Google:** Google IT Support Specialization — *Foundational (Aug 2023)*
+- **NTUC LearningHub:** Machine Learning & Advanced Analytics Using Python — *Intermediate (Mar 2022)*
+- **BasisTech:** Autopsy & Cyber Triage DFIR Training — *Intermediate (Dec 2020)*
 
 ---
 
-## 💼 Work Experience vs 🎓 Education
+## 📈 Career & Academic Progression Ladders
 
-### Professional Experience (Work)
-- **Ensign InfoSecurity:** Cyber Hunt and Incident Response, Consultant *(Mar 2025 — Present)*
-- **Ensign InfoSecurity:** Cyber Hunt and Incident Response, Associate Consultant *(Feb 2023 — Feb 2025)*
-- **Ensign InfoSecurity:** Security Engineer & Consultancy Training *(Jan 2022 — Dec 2022)*
-- **Republic of Singapore Air Force (RSAF):** Air Operation Specialist (3rd Sergeant) *(Oct 2016 — Oct 2018)*
+### Work Career Progression (Upward Ascent)
+- **Step 4 (Current):** Consultant — Cyber Hunt & Incident Response, *Ensign InfoSecurity (Mar 2025 — Present)*
+- **Step 3:** Associate Consultant — Cyber Hunt & Incident Response, *Ensign InfoSecurity (Feb 2023 — Feb 2025)*
+- **Step 2:** Security Engineer & Consultancy Training (Internship), *Ensign InfoSecurity (Jan 2022 — Dec 2022)*
+- **Step 1:** Air Operation Specialist (3rd Sergeant), *Republic of Singapore Air Force (RSAF) (Oct 2016 — Oct 2018)*
 
-### Academic History (Education)
-- **Singapore University of Technology and Design (SUTD):** Master of Science in Security by Design *(Grade: 4.38 / 5.0)*
-- **Singapore Institute of Technology (SIT):** Bachelor of Engineering in ICT (Information Security) *(Graduated with Distinction)*
-- **Singapore Polytechnic (SP):** Diploma in Computer Engineering (Network Security) *(Silver Award in SP Engineering Show 2016)*
+### Academic Progression (Degree Advancement)
+- **Level 3 (Postgraduate):** Master of Science (MS) in Security by Design, *Singapore University of Technology and Design (SUTD) — Grade: 4.38 / 5.0 (2023 — 2025)*
+- **Level 2 (Undergraduate):** Bachelor of Engineering (B.Eng) in ICT (Information Security), *Singapore Institute of Technology (SIT) — Graduated with Distinction (2019 — 2022)*
+- **Level 1 (Foundation):** Diploma in Computer Engineering (Network Security), *Singapore Polytechnic (SP) — Silver Award SP Engineering Show (2013 — 2016)*
 
 ---
 
 ## 💻 Interactive Features
-- **Interactive Terminal (`kk-cli`):** Query credentials, work experience, academics, and research directly.
+- **Interactive Terminal (`kk-cli`):** Type `help`, `radar`, `certs`, `work`, `edu`, `research`.
 - **BinImg2Vec Simulator:** Real-time demonstration mapping unexecuted PE binaries to 2D grayscale representations with self-supervised latent classification.
-- **Centralized Data Store:** All portfolio data is managed effortlessly via `assets/js/portfolio-data.js`.
+- **Privacy Guaranteed:** Zero personal contact PII stored in repository.
 
 ---
 
