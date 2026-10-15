@@ -1,0 +1,50 @@
+:root { color-scheme: light; font-family: Arial, Helvetica, sans-serif; color: #152338; background: #eef2f6; }
+* { box-sizing: border-box; }
+body { margin: 0; font-size: 15px; line-height: 1.5; }
+a { color: #125182; text-underline-offset: 3px; overflow-wrap: anywhere; }
+.profile-toolbar { max-width: 850px; margin: 1.5rem auto; display: flex; justify-content: space-between; align-items: center; padding: 0 1rem; gap: 1rem; }
+button { padding: 0.7rem 1rem; min-height: 44px; border: 0; border-radius: 5px; background: #153d65; color: white; font: inherit; cursor: pointer; }
+#profile-content { max-width: 850px; margin: 0 auto 2rem; background: white; padding: 2.8rem; }
+h1 { font-size: 2rem; margin: 0; }
+h2 { font-size: 1.12rem; border-bottom: 1px solid #c2cbd6; padding-bottom: 0.3rem; margin: 1.5rem 0 0.8rem; }
+h3 { font-size: 1rem; margin: 0; }
+p { margin: 0.35rem 0; }
+.profile-headline { font-weight: 600; font-size: 1.1rem; }
+.profile-summary { margin-top: 1rem; }
+.profile-meta { color: #465569; font-size: 0.9rem; }
+article { margin-bottom: 0.9rem; break-inside: avoid; }
+ul { margin: 0.4rem 0; padding-left: 1.2rem; }
+li + li { margin-top: 0.2rem; }
+.profile-credential-note { font-size: 0.9rem; margin: 0.6rem 0 1rem; }
+.profile-credentials { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.8rem 1.4rem; list-style: none; padding: 0; margin: 0.7rem 0 1.2rem; }
+.profile-credentials li { margin: 0; padding-bottom: 0.5rem; border-bottom: 1px solid #e0e5eb; break-inside: avoid; font-size: 0.9rem; overflow-wrap: anywhere; }
+.profile-credentials p { margin: 0.15rem 0 0; }
+footer { margin-top: 1.5rem; font-size: 0.85rem; border-top: 1px solid #c2cbd6; padding-top: 0.65rem; }
+a:focus-visible, button:focus-visible { outline: 2px solid #125182; outline-offset: 4px; }
+@media screen and (max-width: 600px) {
+  #profile-content { padding: 1.5rem; }
+  .profile-credentials { grid-template-columns: 1fr; }
+}
+@page { size: A4; margin: 12mm; }
+@media print {
+  :root { background: white; }
+  body { font-size: 10pt; line-height: 1.28; }
+  .profile-toolbar { display: none; }
+  #profile-content { max-width: none; margin: 0; padding: 0; }
+  h1 { font-size: 23pt; }
+  h2 { font-size: 12pt; margin: 9pt 0 5pt; break-after: avoid; }
+  p { margin: 2pt 0; }
+  h3 { font-size: 10.5pt; }
+  .profile-headline { font-size: 12pt; }
+  .profile-meta { font-size: 9pt; }
+  .profile-summary { margin-top: 8pt; }
+  article { margin-bottom: 6pt; }
+  .profile-credential-section { break-before: page; }
+  .profile-credential-section > h2 { margin-top: 0; }
+  .profile-credential-note { font-size: 9pt; margin: 6pt 0 10pt; }
+  .profile-credentials { gap: 7pt 14pt; margin: 6pt 0 10pt; }
+  .profile-credentials li { font-size: 9.5pt; padding-bottom: 5pt; }
+  .profile-credentials .profile-meta { font-size: 8.5pt; }
+  a { color: inherit; }
+  footer { display: none; }
+}

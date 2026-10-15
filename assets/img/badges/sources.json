@@ -1,0 +1,132 @@
+[
+  {
+    "credentialId": "gcfe",
+    "title": "GIAC Certified Forensic Examiner (GCFE)",
+    "verificationUrl": "https://www.credly.com/badges/4b7ef970-c93e-4f66-8996-efe75db0f285/public_url",
+    "imageUrl": "https://images.credly.com/images/1114bd59-d721-4bc7-90da-a75116056433/image.png",
+    "issuedOn": "2023-01-20",
+    "expiresOn": "2027-01-31",
+    "checkedOn": "2026-10-15",
+    "sha256": "b1c7f69ef12d3940309fad75d9f9b999e71f7d5eef61ea7e8e93b4184e43dac5"
+  },
+  {
+    "credentialId": "gcp-ace",
+    "title": "Associate Cloud Engineer Certification",
+    "verificationUrl": "https://www.credly.com/badges/b595fc74-2d72-473d-a954-4119cc017043/public_url",
+    "imageUrl": "https://images.credly.com/images/08096465-cbfc-4c3e-93e5-93c5aa61f23e/image.png",
+    "issuedOn": "2026-01-30",
+    "expiresOn": "2029-01-30",
+    "checkedOn": "2026-10-15",
+    "sha256": "607dedbe9b837494a2699c0145b5537b724dcbf597f4d1751f1ca15dcb98ee6a"
+  },
+  {
+    "credentialId": "kcna",
+    "title": "KCNA: Kubernetes and Cloud Native Associate",
+    "verificationUrl": "https://www.credly.com/badges/86258d49-d2c0-4f88-b66a-756bf20a7c92/public_url",
+    "imageUrl": "https://images.credly.com/images/f28f1d88-428a-47f6-95b5-7da1dd6c1000/KCNA_badge.png",
+    "issuedOn": "2025-08-13",
+    "expiresOn": "2027-08-14",
+    "checkedOn": "2026-10-15",
+    "sha256": "8dd0a45743155b5f463110ad6521498258d23e961ee0e0dfc1ffc835b5977a64"
+  },
+  {
+    "credentialId": "lfca",
+    "title": "LFCA: Linux Foundation Certified IT Associate",
+    "verificationUrl": "https://www.credly.com/badges/a000ee6a-f1d0-461e-8e57-bbf47ff1b456/public_url",
+    "imageUrl": "https://images.credly.com/images/a2c14e0a-56cb-4990-809a-23b0850c1f96/Training_Badges_LFCA_for_acclaim.png",
+    "issuedOn": "2025-07-27",
+    "expiresOn": "2027-07-28",
+    "checkedOn": "2026-10-15",
+    "sha256": "037546f258382a411734974c0bdc74750707a17511ba1de9baf40e68cd7de36a"
+  },
+  {
+    "credentialId": "aws-ai",
+    "title": "AWS Certified AI Practitioner",
+    "verificationUrl": "https://www.credly.com/badges/1307d755-0882-4c9d-9904-e2a37b71cc4c/public_url",
+    "imageUrl": "https://images.credly.com/images/4d4693bb-530e-4bca-9327-de07f3aa2348/image.png",
+    "issuedOn": "2026-09-10",
+    "expiresOn": "2029-09-10",
+    "checkedOn": "2026-10-15",
+    "sha256": "9d15292d5d90829ccf3107844384272c247f22063b71083fb57e7c72af9d5f04"
+  },
+  {
+    "credentialId": "isc2-cc",
+    "title": "Certified in Cybersecurity (CC)",
+    "verificationUrl": "https://www.credly.com/badges/58f91df2-bf9f-4178-864e-95583d1d86ca/public_url",
+    "imageUrl": "https://images.credly.com/images/2030e43f-8003-4d4b-9630-847add403c87/image.png",
+    "issuedOn": "2024-03-14",
+    "expiresOn": "2027-03-31",
+    "checkedOn": "2026-10-15",
+    "sha256": "0987f0cac06f3c109e9b6e6236b4fd319b1eaefefc05277e482e66d1bb0ecb43"
+  },
+  {
+    "credentialId": "apisec",
+    "title": "Certified API Security Analyst",
+    "verificationUrl": "https://www.credly.com/badges/bd7fc63c-dc25-4d59-b115-009ee89c2d59/public_url",
+    "imageUrl": "https://images.credly.com/images/2f73db94-bd85-4391-8885-6c14862457eb/image.png",
+    "issuedOn": "2026-02-05",
+    "expiresOn": null,
+    "checkedOn": "2026-10-15",
+    "sha256": "db87aed819198ace97f88afc474f9b389b43db6a9c8557a1d05e179ccc8b1c98"
+  },
+  {
+    "credentialId": "proofpoint-dlp",
+    "title": "Proofpoint Certified DLP Specialist 2024",
+    "verificationUrl": "https://www.credly.com/badges/1ba2ca51-0aaa-49c2-9871-7e39c26ae13c/public_url",
+    "imageUrl": "https://images.credly.com/images/81aeae94-5a93-4e56-919c-d7f01876e138/blob",
+    "issuedOn": "2024-10-01",
+    "expiresOn": "2025-10-01",
+    "checkedOn": "2026-10-15",
+    "sha256": "457d2003658dbcbfc3f7d0847345cbae21a1903192fb34218a0bdc7bc893843c"
+  },
+  {
+    "credentialId": "opswat-cip",
+    "title": "OPSWAT Introduction to Critical Infrastructure Protection (ICIP)",
+    "verificationUrl": "https://www.credly.com/badges/daf7df74-062a-4983-85fb-0d2bd722094c/public_url",
+    "imageUrl": "https://images.credly.com/images/f9f3c533-9b5a-47eb-8a3e-5734663116c0/image.png",
+    "issuedOn": "2024-06-09",
+    "expiresOn": "2025-06-09",
+    "checkedOn": "2026-10-15",
+    "sha256": "04723af96bf60065ba7c7367c4a5f6627e3c0937fc3939c4936d40103b6a2115"
+  },
+  {
+    "credentialId": "google-it-support",
+    "title": "Google IT Support Professional Certificate (v2)",
+    "verificationUrl": "https://www.credly.com/badges/7ee715db-7afa-4498-becf-258698b1bb1e/public_url",
+    "imageUrl": "https://images.credly.com/images/fb97a12f-c0f1-4f37-9b7d-4a830199fe84/GCC_badge_IT_Support_1000x1000.png",
+    "issuedOn": "2023-08-27",
+    "expiresOn": null,
+    "checkedOn": "2026-10-15",
+    "sha256": "9656dfd206978c3d8b842038448489e7c15beb64aade9dd9e25fdabf257a3947"
+  },
+  {
+    "credentialId": "aws-ccp",
+    "title": "AWS Certified Cloud Practitioner",
+    "verificationUrl": "https://www.credly.com/badges/ad9590cf-2978-4b29-8918-f63b8b505ebc/public_url",
+    "imageUrl": "https://images.credly.com/images/00634f82-b07f-4bbd-a6bb-53de397fc3a6/image.png",
+    "issuedOn": "2023-01-26",
+    "expiresOn": "2026-01-26",
+    "checkedOn": "2026-10-15",
+    "sha256": "eefa1b3f5751d05b55a82b7ca266fec564451350a023ae29318c0253589fb1c7"
+  },
+  {
+    "credentialId": "ccna",
+    "title": "CCNA",
+    "verificationUrl": "https://www.credly.com/badges/1e566619-6b87-4e74-ac8e-0de165a355e9/public_url",
+    "imageUrl": "https://images.credly.com/images/683783d8-eaac-4c37-a14d-11bd8a36321d/ccna_600.png",
+    "issuedOn": "2021-10-21",
+    "expiresOn": "2024-10-21",
+    "checkedOn": "2026-10-15",
+    "sha256": "bab970b4a95f31e165ee71d0dbe328732c6fb735d2fc5549488939738cc8c299"
+  },
+  {
+    "credentialId": "cisco-cybersecurity-essentials",
+    "title": "Cybersecurity Essentials",
+    "verificationUrl": "https://www.credly.com/badges/b50ac337-458c-4037-a4e1-e4f9e3d801b7/public_url",
+    "imageUrl": "https://images.credly.com/images/054913b2-e271-49a2-a1a4-9bf1c1f9a404/CyberEssentials.png",
+    "issuedOn": "2023-08-27",
+    "expiresOn": null,
+    "checkedOn": "2026-10-16",
+    "sha256": "538892b862c97eb4486bd3ba7c7c729483984560633acc235033d386dc5999d1"
+  }
+]
