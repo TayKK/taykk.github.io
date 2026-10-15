@@ -19,7 +19,7 @@
   help          - Display this command manual
   about         - Overview of TAY Kai Keng
   journey       - Explore practice, research, and continuing development
-  radar         - Show domain evidence and suggested development steps
+  radar         - Explore my domain experience and related credentials
   research      - Details on published research (BinImg2Vec / ICAIC 2022)
   certs         - List certifications and training (by category & validity)
   work          - Cybersecurity experience (Ensign InfoSecurity)
@@ -49,7 +49,7 @@ Zero means not yet documented, not absence of ability.
 ` + (data.radarLevels || []).map((level, index) => `${index}: ${level.label}`).join('\n') + '\n\n'
         + (data.competencyRadar || []).map(domain => `${domain.domain}: ${domain.level} — ${data.radarLevels[domain.level].label}
   Evidence: ${domain.evidence}
-  Suggested next step: ${domain.nextStep}`).join('\n\n'),
+  Related learning: ${window.getDomainCredentials(domain.id).map(c => `${c.title} [${window.getCredentialStatus(c)}]`).join("; ") || "No credential mapped yet"}`).join('\n\n'),
 
       research: `[FLAGSHIP RESEARCH: ${research.title || 'BinImg2Vec'}]
 --------------------------------------------------------------------------------

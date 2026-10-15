@@ -19,105 +19,94 @@ window.PORTFOLIO_DATA = {
     tagline: "Never stop learning. Knowledge is power.",
     callsign: "KK",
     location: "Singapore",
+    companyStarted: "2022-01",
     status: "ACTIVE PRACTITIONER",
     statusDetail: "Incident response, threat hunting, and malware research",
     linkedinUrl: "https://sg.linkedin.com/in/tay-kai-keng",
     githubUrl: "https://github.com/TayKK",
     credlyUrl: "https://www.credly.com/users/tay-kai-keng/badges/credly",
-    bio: "I’m a Singapore-based Cyber Hunt & Incident Response Consultant at Ensign InfoSecurity. My professional foundation is digital forensics and incident response (DFIR), including incident triage, computer forensics, and breach timeline reconstruction. I co-authored BinImg2Vec and continue to broaden my learning across cybersecurity, cloud, and AI."
+    bio: "I’m Kai Keng, or KK — a cybersecurity practitioner based in Singapore. I joined Ensign InfoSecurity as an intern in January 2022 and now work in cyber hunt and incident response. My work includes incident triage, computer forensics, and breach timeline reconstruction. Co-authoring BinImg2Vec got me thinking about malware beyond the binary, through other ways of representing and analysing it. That experience continues to spark my interest in cybersecurity and AI."
   },
 
   // Documented experience, not a percentage of mastery. See the shared rubric.
   radarLevels: [
-    { label: "Not yet documented", description: "No specific work, project, or training evidence listed in this portfolio." },
-    { label: "Study & training", description: "Relevant education, coursework, or certification; applied delivery is not yet described." },
-    { label: "Applied work / research", description: "A specific project, research contribution, or supporting work activity is described." },
-    { label: "Professional practice", description: "Repeated practice is described as a core responsibility of a professional role." }
+    { label: "Not yet shared", description: "I haven’t shared work, research, or training in this area here yet." },
+    { label: "Study & training", description: "I’ve built foundations through education, courses, or certifications." },
+    { label: "Applied work / research", description: "I’ve contributed through research, a project, or a supporting work activity." },
+    { label: "Professional practice", description: "I use this area regularly as part of my professional responsibilities." }
   ],
   competencyRadar: [
     {
       id: "secops", domain: "Security Operations & Threat Intelligence", short: "SecOps", level: 3,
       scope: "Monitoring, detection engineering, threat hunting, and intelligence analysis.",
-      evidence: "Cyber Hunt & Incident Response roles at Ensign InfoSecurity, with threat hunting listed as a current responsibility. Dedicated intelligence outputs are not yet described.",
-      source: "#progression", sourceLabel: "Career experience",
-      nextStep: "Publish an anonymised hunt case study connecting a hypothesis, telemetry, detection logic, and findings."
+      evidence: "I work in cyber hunt and incident response at Ensign InfoSecurity. Threat hunting is part of my current role, and gathering malware samples for BinImg2Vec gave me exposure to cyber threat intelligence sources.",
+      source: "#progression", sourceLabel: "My experience at Ensign"
     },
     {
       id: "dfir", domain: "Incident Response & Digital Forensics", short: "DFIR", level: 3,
       scope: "Incident handling, host and memory forensics, investigation, and recovery planning.",
-      evidence: "Ensign incident response and forensic investigation roles, including triage and breach timeline reconstruction; supported by GCFE and Autopsy training.",
-      source: "#progression", sourceLabel: "Career experience",
-      nextStep: "Document a sanitized investigation timeline and the reasoning behind containment and recovery decisions."
+      evidence: "Digital forensics and incident response form the core of my work. At Ensign, I’ve worked on incident triage, computer forensics, and breach timeline reconstruction. My GCFE certification and Autopsy training support that foundation.",
+      source: "#progression", sourceLabel: "My experience at Ensign"
     },
     {
       id: "networks", domain: "Network & Endpoint Security", short: "Networks", level: 1,
       scope: "Network segmentation, operating system hardening, endpoint controls, and secure connectivity.",
-      evidence: "Network Security diploma, LFCA, and prior CCNA certification (expired October 2024). A specific hardening deployment is not yet documented.",
-      source: "#certs", sourceLabel: "Certifications & status",
-      nextStep: "Build a segmented network lab and record firewall, Linux hardening, and endpoint detection validation."
+      evidence: "My studies in network security started with my diploma at Singapore Polytechnic. I’ve also completed LFCA and Cisco Cybersecurity Essentials, and previously held CCNA, which expired in October 2024.",
+      source: "#certs", sourceLabel: "My credentials and training"
     },
     {
       id: "cloud", domain: "Cloud & Container Security", short: "Cloud", level: 1,
       scope: "Cloud configuration, workload protection, Kubernetes, and infrastructure as code security.",
-      evidence: "Google Cloud ACE, Kubernetes KCNA, and Azure Fundamentals credentials. A deployed cloud security project is not yet described.",
-      source: "#certs", sourceLabel: "Certifications & status",
-      nextStep: "Publish a small GCP or Kubernetes lab with least privilege, workload policies, and audit logging checks."
+      evidence: "I’ve been broadening my cloud and container knowledge through Google Cloud ACE, Kubernetes KCNA, and Azure Fundamentals. These credentials are part of my learning beyond my day-to-day DFIR work.",
+      source: "#certs", sourceLabel: "My credentials and training"
     },
     {
       id: "iam", domain: "Identity & Access Management", short: "IAM", level: 1,
-      scope: "Authentication, authorization, federation, privileged access, and identity lifecycle.",
-      evidence: "SC-900 and Google Cloud ACE provide related foundations. A dedicated IAM implementation is not yet described.",
-      source: "#certs", sourceLabel: "Certifications & status",
-      nextStep: "Demonstrate SSO, MFA, role-based access, and joiner/mover/leaver controls in a documented lab."
+      scope: "Authentication, authorisation, federation, privileged access, and identity lifecycle.",
+      evidence: "I’ve studied identity and access concepts through SC-900 and Google Cloud ACE. I’m marking this as part of my study and training foundation.",
+      source: "#certs", sourceLabel: "My credentials and training"
     },
     {
       id: "appsec", domain: "Application & Software Security", short: "AppSec", level: 1,
       scope: "Secure development, API security, code review, DevSecOps, and software supply chains.",
-      evidence: "Certified API Security Analyst and an Information Security degree. A specific secure development or API assessment project is not yet documented.",
-      source: "#certs", sourceLabel: "Certifications & status",
-      nextStep: "Assess an intentionally vulnerable API in a lab, fix authorization flaws, and add regression tests."
+      evidence: "I’ve built my application security knowledge through my Information Security degree and the Certified API Security Analyst credential. API security is one of the areas I’ve explored alongside my DFIR focus.",
+      source: "#certs", sourceLabel: "My credentials and training"
     },
     {
-      id: "offensive", domain: "Offensive Security & Vulnerability Assessment", short: "Offensive", level: 0,
+      id: "offensive", domain: "Offensive Security & Vulnerability Assessment", short: "Offensive", level: 1,
       scope: "Vulnerability discovery, penetration testing, adversary emulation, and remediation validation.",
-      evidence: "No dedicated penetration test, vulnerability assessment, or adversary emulation project is currently described. A training provider's name alone is not evidence of this work.",
-      source: null, sourceLabel: null,
-      nextStep: "Complete an authorized lab assessment and publish a report with findings, remediation, and retest results."
+      evidence: "I’ve studied API risks and security testing through Certified API Security Analyst. Its assessment is a knowledge quiz, so I place this at study and training. I haven’t shared a penetration-testing engagement or adversary-emulation project here yet.",
+      source: "#certs", sourceLabel: "My API security studies"
     },
     {
       id: "data", domain: "Data Security & Privacy", short: "Data", level: 1,
       scope: "Data classification, encryption, key management, loss prevention, and privacy controls.",
-      evidence: "Proofpoint DLP Specialist training/certification (expired October 2025). A deployed DLP or privacy program is not yet described.",
-      source: "#certs", sourceLabel: "Certifications & status",
-      nextStep: "Create a sample data classification scheme and validate DLP, encryption, and retention controls with synthetic data."
+      evidence: "I’ve explored data loss prevention through Proofpoint DLP Specialist training and certification. That credential expired in October 2025; I keep it in my learning history with its status clearly shown.",
+      source: "#certs", sourceLabel: "My credential history"
     },
     {
       id: "architecture", domain: "Security Architecture & Engineering", short: "Design", level: 1,
       scope: "Threat modelling, secure design, trust boundaries, control selection, and security validation.",
-      evidence: "MS in Security by Design, with secure architecture and formal verification listed in the academic profile. A specific design artefact is not yet shown.",
-      source: "#progression", sourceLabel: "Academic background",
-      nextStep: "Publish a threat model and architecture decision record that connect risks to controls and validation."
+      evidence: "I studied Security by Design at SUTD, including secure architecture, formal verification, and cyber-physical systems. This is the academic foundation I bring to this area.",
+      source: "#progression", sourceLabel: "My education"
     },
     {
       id: "grc", domain: "Governance, Risk & Compliance", short: "GRC", level: 2,
-      scope: "Risk assessment, policy, assurance, regulatory obligations, and resilience governance.",
-      evidence: "Maturity assessments are listed in the Ensign internship, supported by GAICC ISO/IEC 42001 Lead Implementer and SC-900 credentials. End-to-end program ownership is not described.",
-      source: "#progression", sourceLabel: "Career experience",
-      nextStep: "Develop a sample risk register and control assessment with evidence requirements and treatment decisions."
+      scope: "Risk assessment, policy, assurance, regulatory obligations, resilience governance, and security awareness.",
+      evidence: "I supported maturity assessments during my Ensign internship. I’ve since added study in AI governance through GAICC ISO/IEC 42001 Lead Implementer, alongside the security and compliance foundations covered by SC-900.",
+      source: "#progression", sourceLabel: "My experience at Ensign"
     },
     {
       id: "ot", domain: "OT, ICS & IoT Security", short: "OT / IoT", level: 1,
       scope: "Industrial and cyber-physical systems, device security, safety-aware controls, and resilience.",
-      evidence: "Cyber-physical systems study and OPSWAT Introduction to CIP training (expired June 2025). The career profile mentions this area without a specific deployment or assessment.",
-      source: "#certs", sourceLabel: "Certifications & status",
-      nextStep: "Model a simulated industrial network and document segmentation, monitoring, and a safety-aware incident playbook."
+      evidence: "Cyber-physical systems feature in my Security by Design studies and current role. I’ve also completed OPSWAT’s Introduction to Critical Infrastructure Protection training; that credential expired in June 2025.",
+      source: "#certs", sourceLabel: "My credentials and training"
     },
     {
       id: "ai", domain: "AI & Machine Learning Security", short: "AI / ML", level: 2,
       scope: "AI for security, protection of AI systems, model evaluation, and AI governance.",
-      evidence: "BinImg2Vec co-authorship demonstrates applied AI for malware classification. CLLMSP and AI governance credentials support learning about securing AI; the paper does not establish production LLM security experience.",
-      source: "#research", sourceLabel: "BinImg2Vec publication",
-      nextStep: "Extend the research portfolio with a reproducible AI security evaluation covering threat models, test cases, and mitigations."
+      evidence: "Co-authoring BinImg2Vec opened up another way for me to think about malware: looking at different representations beyond the binary itself. I’ve continued learning through AWS AI, CLLMSP, and AI governance credentials. The connection between cybersecurity and AI keeps me curious.",
+      source: "#research", sourceLabel: "My BinImg2Vec research experience"
     }
   ],
 
@@ -128,7 +117,7 @@ window.PORTFOLIO_DATA = {
       badge: "ORIGINS",
       icon: "🛡️",
       title: "Blue Team Defence & DFIR",
-      summary: "Professional experience at Ensign InfoSecurity includes incident triage, computer forensics, breach timeline reconstruction, and threat hunting.",
+      summary: "I joined Ensign InfoSecurity as an intern in January 2022. My work has grown to include incident triage, computer forensics, breach timeline reconstruction, and threat hunting.",
       tags: ["Threat Hunting", "Incident Response", "GCFE", "Forensics"]
     },
     {
@@ -136,7 +125,7 @@ window.PORTFOLIO_DATA = {
       badge: "SYSTEMS",
       icon: "☁️",
       title: "Cloud & Systems Infrastructure",
-      summary: "Building cloud and systems foundations through Google Cloud ACE, Linux LFCA, and Kubernetes KCNA. The next step is to demonstrate these foundations through documented security projects.",
+      summary: "I’ve been broadening my knowledge through Google Cloud ACE, Linux LFCA, and Kubernetes KCNA. These sit alongside my earlier network security studies and CCNA certification.",
       tags: ["Google Cloud ACE", "Kubernetes KCNA", "Linux LFCA", "Network CCNA"]
     },
     {
@@ -144,7 +133,7 @@ window.PORTFOLIO_DATA = {
       badge: "APPLICATIONS",
       icon: "⚔️",
       title: "Application & API Security",
-      summary: "Developing application security knowledge through the Certified API Security Analyst credential. Focus areas include API authorisation and the OWASP API Top 10; practical assessment evidence is a development goal.",
+      summary: "I’ve explored application and API security through my Information Security degree and the Certified API Security Analyst credential, including API authorisation and the OWASP API Top 10.",
       tags: ["API Security", "Red Team Leaders", "OWASP API Top 10", "ISC2 CC"]
     },
     {
@@ -152,7 +141,7 @@ window.PORTFOLIO_DATA = {
       badge: "FRONTIER",
       icon: "🧠",
       title: "AI Security & Governance",
-      summary: "Co-authored BinImg2Vec, research on self-supervised malware classification published at ICAIC 2022. Continuing study includes AWS AI, LLM security (CLLMSP), and GAICC ISO/IEC 42001 AI governance.",
+      summary: "BinImg2Vec got me interested in looking at malware through different representations. I’ve continued learning about AI, LLM security, and AI governance through AWS AI, CLLMSP, and GAICC ISO/IEC 42001.",
       tags: ["BinImg2Vec", "AWS AI", "LLM Security", "ISO/IEC 42001"]
     }
   ],
@@ -179,7 +168,7 @@ window.PORTFOLIO_DATA = {
    * CERTIFICATIONS & TRAINING
    * Enriched with:
    * - category: 'proctored' | 'online' | 'course'
-   * - domain: 'dfir' | 'cloud' | 'ai' | 'appsec' | 'systems' | 'grc'
+   * - domains: scoped coverage using competencyRadar IDs; training evidence only
    * - vendor: issuer mark key
    * ==========================================================================
    */
@@ -196,7 +185,10 @@ window.PORTFOLIO_DATA = {
       issuer: "GIAC Certifications",
       vendor: "giac",
       category: "proctored",
-      domain: "dfir",
+      domains: [
+        { id: "dfir", reason: "Windows evidence acquisition, forensic analysis, and incident investigation." },
+        { id: "secops", reason: "Log analysis and tracing user and application activity support my investigation and monitoring foundations." }
+      ],
       issued: "Jan 2023",
       expires: "Jan 2027",
       status: "active",
@@ -214,7 +206,12 @@ window.PORTFOLIO_DATA = {
       issuer: "Google Cloud",
       vendor: "google",
       category: "proctored",
-      domain: "cloud",
+      domains: [
+        { id: "cloud", reason: "Google Cloud deployment, operations, and cloud security." },
+        { id: "iam", reason: "Identity and access management is explicitly listed in the badge skills." },
+        { id: "networks", reason: "Cloud networking foundations support secure connectivity." },
+        { id: "architecture", reason: "Cloud architecture and infrastructure as code provide foundations for secure infrastructure design." }
+      ],
       issued: "Jan 2026",
       expires: "Jan 2029",
       status: "active",
@@ -232,7 +229,11 @@ window.PORTFOLIO_DATA = {
       issuer: "The Linux Foundation & CNCF",
       vendor: "cncf",
       category: "proctored",
-      domain: "cloud",
+      domains: [
+        { id: "cloud", reason: "Kubernetes, containers, and cloud-native security principles." },
+        { id: "networks", reason: "Cloud-native networking and service mesh concepts." },
+        { id: "architecture", reason: "Container, pod, node, and cluster architecture provides foundations for secure workload design." }
+      ],
       issued: "Aug 2025",
       expires: "Aug 2027",
       status: "active",
@@ -250,7 +251,9 @@ window.PORTFOLIO_DATA = {
       issuer: "The Linux Foundation",
       vendor: "linuxfoundation",
       category: "proctored",
-      domain: "systems",
+      domains: [
+        { id: "networks", reason: "Operating systems, basic networking, and security best practices." }
+      ],
       issued: "Jul 2025",
       expires: "Jul 2027",
       status: "active",
@@ -268,7 +271,11 @@ window.PORTFOLIO_DATA = {
       issuer: "Amazon Web Services (AWS)",
       vendor: "aws",
       category: "proctored",
-      domain: "ai",
+      domains: [
+        { id: "ai", reason: "AI, ML, generative AI, and responsible use of these technologies." },
+        { id: "cloud", reason: "Core AWS services, infrastructure, and the cloud shared responsibility model." },
+        { id: "grc", reason: "Responsible AI use and shared responsibility for security and compliance." }
+      ],
       issued: "Sep 2026",
       expires: "Sep 2029",
       status: "active",
@@ -281,7 +288,10 @@ window.PORTFOLIO_DATA = {
       issuer: "Global AI Certification Council (GAICC)",
       vendor: "gaicc",
       category: "proctored",
-      domain: "ai",
+      domains: [
+        { id: "ai", reason: "AI management systems and AI risk frameworks in my ISO/IEC 42001 studies." },
+        { id: "grc", reason: "ISO/IEC 42001 management-system implementation and AI governance." }
+      ],
       issued: "Jun 2026",
       expires: "Jun 2029",
       status: "active",
@@ -299,7 +309,13 @@ window.PORTFOLIO_DATA = {
       issuer: "ISC2",
       vendor: "isc2",
       category: "proctored",
-      domain: "systems",
+      domains: [
+        { id: "secops", reason: "Security operations and security principles." },
+        { id: "dfir", reason: "Incident response and disaster recovery concepts." },
+        { id: "networks", reason: "Network security fundamentals." },
+        { id: "iam", reason: "Access control concepts." },
+        { id: "grc", reason: "Business continuity, disaster recovery, and security principles support resilience governance." }
+      ],
       issued: "Mar 2024",
       expires: "Mar 2027",
       status: "active",
@@ -312,7 +328,11 @@ window.PORTFOLIO_DATA = {
       issuer: "Microsoft",
       vendor: "microsoft",
       category: "proctored",
-      domain: "grc",
+      domains: [
+        { id: "iam", reason: "Identity fundamentals and Microsoft Entra ID." },
+        { id: "grc", reason: "Security compliance and compliance management." },
+        { id: "architecture", reason: "Zero Trust concepts provide a foundation for thinking about trust boundaries and controls." }
+      ],
       issued: "Oct 2026",
       expires: "No Expiration",
       status: "active",
@@ -325,7 +345,10 @@ window.PORTFOLIO_DATA = {
       issuer: "Microsoft",
       vendor: "microsoft",
       category: "proctored",
-      domain: "cloud",
+      domains: [
+        { id: "cloud", reason: "Azure services and cloud security fundamentals." },
+        { id: "grc", reason: "Security and governance foundations for cloud services." }
+      ],
       issued: "Jun 2025",
       expires: "No Expiration",
       status: "active",
@@ -338,7 +361,10 @@ window.PORTFOLIO_DATA = {
       issuer: "Microsoft",
       vendor: "microsoft",
       category: "proctored",
-      domain: "ai",
+      domains: [
+        { id: "ai", reason: "AI concepts and Azure Cognitive Services provide foundations for my AI learning." },
+        { id: "cloud", reason: "Azure AI services provide cloud-platform context for AI workloads." }
+      ],
       issued: "May 2024",
       expires: "No Expiration",
       status: "active",
@@ -356,7 +382,9 @@ window.PORTFOLIO_DATA = {
       issuer: "Amazon Web Services (AWS)",
       vendor: "aws",
       category: "proctored",
-      domain: "cloud",
+      domains: [
+        { id: "cloud", reason: "Foundational AWS services and cloud concepts." }
+      ],
       issued: "Jan 2023",
       expires: "Jan 2026",
       status: "expired",
@@ -374,7 +402,9 @@ window.PORTFOLIO_DATA = {
       issuer: "Cisco",
       vendor: "cisco",
       category: "proctored",
-      domain: "systems",
+      domains: [
+        { id: "networks", reason: "Network access, IP connectivity, routing, services, and security fundamentals." }
+      ],
       issued: "Oct 2021",
       expires: "Oct 2024",
       status: "expired",
@@ -394,7 +424,11 @@ window.PORTFOLIO_DATA = {
       issuer: "APIsec University",
       vendor: "apisec",
       category: "online",
-      domain: "appsec",
+      domains: [
+        { id: "appsec", reason: "API risks, threats, and best practices across the OWASP API Security Top 10." },
+        { id: "iam", reason: "API authorisation risks, including broken object-level authorisation." },
+        { id: "offensive", reason: "API security testing and risk identification; assessed through a knowledge quiz." }
+      ],
       issued: "Feb 2026",
       expires: "No Expiration",
       status: "active",
@@ -407,7 +441,10 @@ window.PORTFOLIO_DATA = {
       issuer: "Red Team Leaders",
       vendor: "redteam",
       category: "online",
-      domain: "ai",
+      domains: [
+        { id: "ai", reason: "LLM security, prompt injection, and model risk." },
+        { id: "appsec", reason: "Prompt injection is an application-security concern in systems built around LLMs." }
+      ],
       issued: "Jun 2026",
       expires: "No Expiration",
       status: "active",
@@ -420,7 +457,9 @@ window.PORTFOLIO_DATA = {
       issuer: "Red Team Leaders",
       vendor: "redteam",
       category: "online",
-      domain: "grc",
+      domains: [
+        { id: "grc", reason: "Cybersecurity education and curriculum development support security awareness and training programmes." }
+      ],
       issued: "Jun 2026",
       expires: "No Expiration",
       status: "active",
@@ -438,7 +477,10 @@ window.PORTFOLIO_DATA = {
       issuer: "Proofpoint",
       vendor: "proofpoint",
       category: "online",
-      domain: "appsec",
+      domains: [
+        { id: "data", reason: "Data loss prevention, information protection, and data detection." },
+        { id: "secops", reason: "Data detection and tuning DLP policy rules support security monitoring foundations." }
+      ],
       issued: "Oct 2024",
       expires: "Oct 2025",
       status: "expired",
@@ -456,7 +498,9 @@ window.PORTFOLIO_DATA = {
       issuer: "OPSWAT Academy",
       vendor: "opswat",
       category: "online",
-      domain: "systems",
+      domains: [
+        { id: "ot", reason: "Introductory critical infrastructure and critical-network protection concepts." }
+      ],
       issued: "Jun 2024",
       expires: "Jun 2025",
       status: "expired",
@@ -476,7 +520,11 @@ window.PORTFOLIO_DATA = {
       issuer: "Cisco",
       vendor: "cisco",
       category: "course",
-      domain: "systems",
+      domains: [
+        { id: "networks", reason: "Foundational network security and defensive concepts." },
+        { id: "data", reason: "Encryption, confidentiality, integrity, and availability." },
+        { id: "grc", reason: "An introduction to cybersecurity laws." }
+      ],
       issued: "Aug 2023",
       expires: "No Expiration",
       status: "active",
@@ -493,7 +541,9 @@ window.PORTFOLIO_DATA = {
       issuer: "Coursera / Google",
       vendor: "googlecourse",
       category: "course",
-      domain: "systems",
+      domains: [
+        { id: "networks", reason: "Networking, operating systems, system administration, and security foundations." }
+      ],
       issued: "Aug 2023",
       expires: "No Expiration",
       status: "active",
@@ -506,7 +556,9 @@ window.PORTFOLIO_DATA = {
       issuer: "NTUC LearningHub",
       vendor: "ntuc",
       category: "course",
-      domain: "ai",
+      domains: [
+        { id: "ai", reason: "Machine learning and predictive analytics provide foundations for my AI research interests." }
+      ],
       issued: "Mar 2022",
       expires: "No Expiration",
       status: "active",
@@ -519,7 +571,9 @@ window.PORTFOLIO_DATA = {
       issuer: "BasisTech",
       vendor: "basistech",
       category: "course",
-      domain: "dfir",
+      domains: [
+        { id: "dfir", reason: "Autopsy digital forensics and Cyber Triage analysis training." }
+      ],
       issued: "Dec 2020",
       expires: "No Expiration",
       status: "active",
@@ -637,4 +691,19 @@ window.formatCredentialDate = function (iso, fallback) {
   return iso ? new Date(`${iso}T12:00:00Z`).toLocaleDateString("en-GB", {
     timeZone: "UTC", day: "numeric", month: "short", year: "numeric"
   }) : fallback;
+};
+
+// Shared by the domain map, catalogue, and terminal. A mapping describes topic
+// coverage; it does not automatically raise a domain's experience level.
+window.getDomainCredentials = function (domainId) {
+  return window.PORTFOLIO_DATA.certifications.filter(c => c.domains.some(d => d.id === domainId));
+};
+
+window.getCompanyTenure = function (now = new Date()) {
+  const parts = new Intl.DateTimeFormat("en-SG", { timeZone: "Asia/Singapore", year: "numeric", month: "numeric" }).formatToParts(now);
+  const values = Object.fromEntries(parts.map(part => [part.type, part.value]));
+  const [startYear, startMonth] = window.PORTFOLIO_DATA.profile.companyStarted.split("-").map(Number);
+  const totalMonths = Math.max(0, (Number(values.year) - startYear) * 12 + Number(values.month) - startMonth);
+  const years = Math.floor(totalMonths / 12), months = totalMonths % 12;
+  return [years ? `${years} year${years === 1 ? "" : "s"}` : "", months ? `${months} month${months === 1 ? "" : "s"}` : ""].filter(Boolean).join(" and ") || "less than a month";
 };

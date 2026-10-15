@@ -21,7 +21,8 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛡️</text></svg>">
 
   <!-- Core Stylesheet -->
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/style.css" media="screen">
+  <link rel="stylesheet" href="assets/css/profile.css" media="print">
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to content</a>
@@ -75,10 +76,10 @@
           Cybersecurity Practitioner &amp; Enthusiast<br>DFIR · Threat Hunting · Applied AI Research
         </div>
 
-        <p class="hero-bio">I’m a Singapore-based <strong>Cyber Hunt &amp; Incident Response Consultant</strong> at Ensign InfoSecurity. My professional foundation is digital forensics and incident response (DFIR), including incident triage, computer forensics, and breach timeline reconstruction. I co-authored <strong>BinImg2Vec</strong> and continue to broaden my learning across cybersecurity, cloud, and AI.</p>
+        <p class="hero-bio">I’m Kai Keng, or KK — a cybersecurity practitioner based in Singapore. I joined Ensign InfoSecurity as an intern in January 2022 and now work in cyber hunt and incident response. My work includes incident triage, computer forensics, and breach timeline reconstruction. Co-authoring BinImg2Vec got me thinking about malware beyond the binary, through other ways of representing and analysing it. That experience continues to spark my interest in cybersecurity and AI.</p>
 
         <ul class="hero-evidence" aria-label="Professional highlights">
-          <li><a href="#progression"><strong>Consultant, Ensign InfoSecurity</strong><span>Cyber Hunt &amp; Incident Response · since March 2025</span></a></li>
+          <li><a href="#progression"><strong>Ensign InfoSecurity · since 2022</strong><span id="company-tenure">Since January 2022 · from internship to cyber hunt and incident response</span></a></li>
           <li><a href="#research"><strong>BinImg2Vec co-author</strong><span>AI for malware classification · ICAIC 2022</span></a></li>
           <li><a href="#progression"><strong>Master of Science in Security by Design</strong><span>Singapore University of Technology and Design (SUTD)</span></a></li>
         </ul>
@@ -131,7 +132,7 @@
         <div class="section-tag">Professional Background</div>
         <h2 class="section-title">Experience &amp; Education</h2>
         <p class="section-description">
-          Cybersecurity experience at Ensign InfoSecurity in Singapore, supported by local qualifications in information security, network security, and secure design.
+          I started at Ensign InfoSecurity in 2022. Here’s how my work and studies in Singapore have shaped my path in cybersecurity.
         </p>
       </div>
 
@@ -268,7 +269,7 @@
       <div class="section-head">
         <div class="section-tag">Continuous Learning</div>
         <h2 class="section-title">Credentials &amp; Training</h2>
-        <p class="section-description">Qualifications and training across cybersecurity, cloud, and AI. Explore my full record by type, domain, or validity.</p>
+        <p class="section-description">My learning spans cybersecurity, cloud, and AI. Each credential can cover several domains; its tags link to the same domains in my map. Explore by type, domain, or validity.</p>
         <a class="credential-link" href="https://www.credly.com/users/tay-kai-keng/badges/credly" target="_blank" rel="noopener noreferrer">View my public badges on Credly →</a>
       </div>
 
@@ -289,12 +290,7 @@
             <label class="filter-group-label" for="filter-cert-domain">Domain:</label>
             <select id="filter-cert-domain" class="filter-select">
               <option value="all">All domains</option>
-              <option value="dfir">Digital Forensics &amp; Incident Response</option>
-              <option value="cloud">Cloud &amp; Containers</option>
-              <option value="ai">AI &amp; Machine Learning</option>
-              <option value="appsec">Application &amp; API Security</option>
-              <option value="systems">Systems &amp; Networks</option>
-              <option value="grc">Governance, Risk &amp; Compliance</option>
+              <!-- Domain options use the same taxonomy as the chart. -->
             </select>
           </div>
           <div class="filter-group">
@@ -318,15 +314,15 @@
       <div class="section-head">
         <div class="section-tag">Experience &amp; Development</div>
         <h2 class="section-title" id="domain-map-heading">My Cybersecurity Domain Map</h2>
-        <p class="section-description">A view of current experience and areas to build next. All 12 domains stay visible, including those with no evidence listed yet.</p>
+        <p class="section-description">DFIR is where I practise most, but my curiosity goes much wider. I use these 12 domains to connect my work, research, and learning—and to see where I can build further.</p>
       </div>
       <details class="radar-methodology">
         <summary>How to read the map</summary>
-        <p>Levels are self-assessed from the experience, education, research, and credentials described in this portfolio. They represent the strongest documented evidence in each domain, not proficiency across every subtopic. A zero means no specific evidence is listed here; it does not establish a lack of ability.</p>
+        <p>I place myself using the strongest experience I can explain in each domain. The level applies to the work or learning described below; it doesn’t imply equal experience in every subtopic. All 12 domains remain visible as I develop.</p>
         <dl id="radar-rubric" class="radar-rubric"></dl>
-        <p>Training and credentials alone do not establish professional delivery. Suggested next steps are development ideas, not completed work or fixed career commitments. These 12 broad domains are a portfolio framework, not a certification standard or an exhaustive taxonomy.</p>
+        <p>A credential may support several domains, with a specific reason for each mapping. Credentials and courses support level 1; my applied contributions support level 2, and regular professional responsibilities support level 3. Expired credentials remain part of my learning history and are labelled. I use this map to describe my experience, not as a proficiency score or an official certification framework.</p>
       </details>
-      <p class="domain-instruction">Open a domain to see its scope, current evidence, and a suggested next step.</p>
+      <p class="domain-instruction">Open a domain to see why I place myself there, the related credentials, and how each one connects.</p>
       <div class="domain-evidence-grid" id="domain-evidence-list"></div>
       <noscript><p>Enable JavaScript to explore the domain map. Career experience, education, and research are also described in the sections below.</p></noscript>
     </div>
@@ -338,7 +334,7 @@
         <div class="section-tag">Optional Explorer</div>
         <h2 class="section-title">Interactive Terminal — kk-cli</h2>
         <p class="section-description">
-          Recruiters and engineers can query credentials, career experience, and research directly. Supports <code class="mono">[Tab]</code> autocomplete and <code class="mono">[↑/↓]</code> history.
+          If you enjoy exploring through a terminal, try my credentials, experience, or research commands. Supports <code class="mono">[Tab]</code> autocomplete and <code class="mono">[↑/↓]</code> history.
         </p>
       </div>
 
@@ -384,9 +380,9 @@
   <section id="connect" class="section">
     <div class="container">
       <div class="connect-card">
-        <h2 class="connect-title">Ready to Connect</h2>
+        <h2 class="connect-title">Say hello</h2>
         <p class="connect-desc">
-          Based in <strong>Singapore</strong>, I welcome conversations with practitioners, researchers, and hiring teams about cybersecurity, especially DFIR, threat hunting, and applied AI research. Connect with me on LinkedIn, or explore my printable profile with current certifications and assessments.
+          I’m based in <strong>Singapore</strong>, and I’m always curious about how others see cybersecurity. Wherever you’re from, whatever your field or experience level, you’re welcome here. If something in my work, research, or learning sparks a thought, say hello on LinkedIn.
         </p>
 
         <div class="connect-links">
@@ -405,6 +401,8 @@
   </section>
   </main>
 
+  <div id="profile-content" class="print-only" aria-label="Printable dossier"></div>
+
   <!-- Site Footer -->
   <footer class="site-footer">
     <div class="container footer-content">
@@ -421,6 +419,7 @@
 
   <!-- Scripts -->
   <script src="assets/js/portfolio-data.js"></script>
+  <script src="assets/js/profile.js"></script>
   <script src="assets/js/vendor-logos.js"></script>
   <script src="assets/js/radar-chart.js"></script>
   <script src="assets/js/binimg2vec-demo.js"></script>

@@ -39,14 +39,14 @@
     const labels = domains.map((domain, i) => {
       const [x, y] = point(i, radius + 28);
       const anchor = Math.abs(x - center) < 5 ? "middle" : x > center ? "start" : "end";
-      const label = `${domain.domain}: ${domain.level} — ${levels[domain.level].label}. Explore evidence and suggested next step.`;
+      const label = `${domain.domain}: ${domain.level} — ${levels[domain.level].label}. Explore my experience and related credentials.`;
       return `<a href="#domain-${escape(domain.id)}" class="radar-domain-link" data-domain="${escape(domain.id)}" aria-label="${escape(label)}">
         <text class="radar-label" x="${x}" y="${y + 5}" text-anchor="${anchor}">${escape(domain.short)}</text>
       </a>`;
     }).join("");
 
     container.innerHTML = `
-      <p class="radar-intro">Documented experience across 12 cyber domains. Select a domain to explore the evidence and a next step.</p>
+      <p class="radar-intro">Where I work, what I’ve studied, and what I’m still building. Select a domain to explore my experience and related credentials.</p>
       <svg class="radar-chart" viewBox="0 0 420 420" role="group" aria-labelledby="radar-title radar-description">
         <title id="radar-title">Cybersecurity experience &amp; growth map</title>
         <desc id="radar-description">Self-assessed experience on a scale from 0 to 3. Each domain label links to its evidence below. Zero means not yet documented in this portfolio.</desc>
@@ -59,8 +59,24 @@
       <ol class="radar-legend" start="0" aria-label="Documented experience scale">
         ${levels.map((level, index) => `<li><span class="radar-level-number" aria-hidden="true">${index}</span><span>${escape(level.label)}</span></li>`).join("")}
       </ol>
-      <p class="radar-note">Self-assessed from portfolio evidence. These levels describe experience, not measured proficiency.</p>
-      <a class="radar-explore" href="#domain-map">Explore all domains &amp; development steps →</a>`;
+      <p class="radar-note">My self-assessment, based on the work, research, and learning I share here.</p>
+      <a class="radar-explore" href="#domain-map">Explore my experience across all domains →</a>`;
+
+    function credentialEvidence(domain) {
+      const credentials = window.getDomainCredentials(domain.id);
+      if (!credentials.length) return '<p>I haven’t listed a credential specifically mapped to this domain yet. My experience above explains the level.</p>';
+      return `<h3>Related credentials &amp; learning (${credentials.length})</h3>
+        <p class="domain-learning-note">These support my study foundation. My work and research above explain any level beyond 1.</p>
+        <ul class="domain-credentials">${credentials.map(c => {
+          const coverage = c.domains.find(d => d.id === domain.id);
+          const status = {active: "Current", completed: "Course completed", expired: "Expired · learning history"}[window.getCredentialStatus(c)];
+          const source = c.credentialUrl
+            ? `<a href="${escape(c.credentialUrl)}" target="_blank" rel="noopener noreferrer">Public badge &amp; scope →</a>`
+            : '<span class="domain-mapping-source">Based on my listed credential topics</span>';
+          return `<li data-domain-credential="${escape(c.id)}"><strong>${escape(c.title)}</strong><span class="domain-credential-status">${status}</span><p>${escape(coverage.reason)}</p>${source}</li>`;
+        }).join("")}</ul>
+        <a class="domain-source" href="#certs" data-filter-domain="${escape(domain.id)}">View these in my credential catalogue →</a>`;
+    }
 
     directory.innerHTML = domains.map(domain => `
       <details class="domain-evidence" id="domain-${escape(domain.id)}">
@@ -70,11 +86,10 @@
         </summary>
         <div class="domain-evidence-body">
           <p class="domain-scope">${escape(domain.scope)}</p>
-          <h3>Current evidence</h3>
+          <h3>Why I place myself here</h3>
           <p>${escape(domain.evidence)}</p>
           ${domain.source ? `<a class="domain-source" href="${escape(domain.source)}">${escape(domain.sourceLabel)} →</a>` : ""}
-          <h3>Suggested next step</h3>
-          <p>${escape(domain.nextStep)}</p>
+          ${credentialEvidence(domain)}
         </div>
       </details>`).join("");
 

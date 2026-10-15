@@ -20,6 +20,9 @@
     const data = window.PORTFOLIO_DATA;
     if (!data) return;
 
+    document.querySelector(".hero-bio").textContent = data.profile.bio;
+    document.getElementById("company-tenure").textContent = `${window.getCompanyTenure()} since January 2022 · including my internship`;
+    document.getElementById("filter-cert-domain").innerHTML = '<option value="all">All domains</option>' + data.competencyRadar.map(d => `<option value="${escapeHtml(d.id)}">${escapeHtml(d.domain)}</option>`).join("");
     renderResearch(data.research);
     renderCertifications(data.certifications);
     renderWorkProgression(data.workProgression);
@@ -47,14 +50,17 @@
       ? `<img class="credential-badge" src="${escapeHtml(c.badgeImage)}" alt="${escapeHtml(c.title)} badge" width="56" height="56" loading="lazy">`
       : `<div class="vendor-logo-wrapper" aria-hidden="true">${window.getVendorLogo(c.vendor)}</div>`;
     const types = { proctored: "Proctored certification", online: "Online assessment", course: "Course completion" };
-    const domain = document.querySelector(`#filter-cert-domain option[value="${c.domain}"]`).textContent;
+    const domains = c.domains.map(coverage => {
+      const domain = window.PORTFOLIO_DATA.competencyRadar.find(d => d.id === coverage.id);
+      return `<a class="cert-domain-chip" href="#domain-${escapeHtml(domain.id)}" title="${escapeHtml(domain.domain)}" aria-label="${escapeHtml(domain.domain)}: explore my experience and related credentials">${escapeHtml(domain.short)}</a>`;
+    }).join("");
     return `<article class="cert-card ${status === "expired" ? "expired" : ""}" data-credential-id="${escapeHtml(c.id)}">
       <div class="cert-header">
         ${art}
         <div class="cert-heading"><h3 class="cert-title">${escapeHtml(c.title)}</h3><p class="cert-issuer-badge">${escapeHtml(c.issuer)}</p></div>
       </div>
       <div class="cert-classification"><span class="status-badge ${status}">${statusLabel}</span><span>${types[c.category]}</span></div>
-      <p class="cert-domain">${escapeHtml(domain)}</p>
+      <div class="cert-domains" aria-label="Related cyber domains">${domains}</div>
       <div class="cert-validity"><span>${status === "completed" ? "Completed" : "Issued"}: ${escapeHtml(issued)}</span>${status === "completed" ? "" : `<span>${escapeHtml(expiry)}</span>`}</div>
       ${c.credentialUrl ? `<a class="credential-link" href="${escapeHtml(c.credentialUrl)}" target="_blank" rel="noopener noreferrer" aria-label="Verify ${escapeHtml(c.title)} on Credly">Verify on Credly →</a>` : ""}
     </article>`;
@@ -67,7 +73,7 @@
     // Multi-criteria filtering
     const filtered = certsList.filter(c => {
       const matchCat = activeCategory === "all" || c.category === activeCategory;
-      const matchDomain = activeDomain === "all" || c.domain === activeDomain;
+      const matchDomain = activeDomain === "all" || c.domains.some(d => d.id === activeDomain);
       const state = window.getCredentialStatus(c);
       const matchStatus = activeStatus === "all" || (activeStatus === "active" ? state !== "expired" : state === activeStatus);
       return matchCat && matchDomain && matchStatus;
@@ -177,15 +183,23 @@
         renderCertifications(window.PORTFOLIO_DATA.certifications);
       });
     });
-    document.getElementById("reset-cert-filters").addEventListener("click", () => {
-      activeCategory = activeDomain = activeStatus = "all";
-      domainSelect.value = "all";
+    function resetFilters(domain = "all") {
+      activeCategory = activeStatus = "all";
+      activeDomain = domain;
+      domainSelect.value = domain;
       for (const button of [...catTabs, ...statusBtns]) {
         const active = (button.dataset.certCat || button.dataset.certStatus) === "all";
         button.classList.toggle("active", active);
         button.setAttribute("aria-pressed", String(active));
       }
       renderCertifications(window.PORTFOLIO_DATA.certifications);
+    }
+    document.getElementById("reset-cert-filters").addEventListener("click", () => resetFilters());
+    document.getElementById("domain-evidence-list").addEventListener("click", event => {
+      const link = event.target.closest("[data-filter-domain]");
+      if (!link) return;
+      resetFilters(link.dataset.filterDomain);
+      domainSelect.focus({ preventScroll: true });
     });
   }
 

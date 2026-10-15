@@ -1331,7 +1331,7 @@ body::before {
   .dossier-tag { font-size: 0.65rem; }
 }
 
-/* Evidence-first reading path and recruiter shortcuts. */
+/* Profile highlights and navigation. */
 .skip-link { position: fixed; top: -5rem; left: 1rem; z-index: 200; padding: 0.7rem 1rem; background: var(--accent-primary); color: var(--bg-base); border-radius: var(--radius-sm); }
 .skip-link:focus { top: 0.7rem; }
 #main-content { scroll-margin-top: var(--nav-height); }
@@ -1389,3 +1389,18 @@ body::before {
   .terminal-body { padding: 0.85rem; }
   .terminal-input { min-width: 0; }
 }
+
+/* Shared domain vocabulary and credential evidence. */
+.print-only { display: none; }
+.cert-domains { display: flex; flex-wrap: wrap; gap: 0.35rem; margin: 0.4rem 0 0.7rem; }
+.cert-domain-chip { display: inline-flex; align-items: center; min-height: 32px; padding: 0.2rem 0.6rem; border: 1px solid var(--border-subtle); border-radius: 1rem; color: var(--accent-primary); font-size: 0.76rem; }
+.cert-domain-chip:hover { border-color: var(--accent-primary); background: var(--bg-hover); }
+.cert-domain-chip:focus-visible { outline: 2px solid var(--accent-primary); outline-offset: 3px; }
+.domain-credentials { list-style: none; padding: 0; margin: 0.8rem 0; }
+.domain-credentials li { padding: 0.75rem 0; border-top: 1px solid var(--border-subtle); overflow-wrap: anywhere; }
+.domain-credentials strong { display: block; color: var(--text-head); font-size: 0.83rem; }
+.domain-credentials p { margin: 0.4rem 0; }
+.domain-credentials a { color: var(--accent-primary); }
+.domain-credential-status, .domain-mapping-source { display: block; font-size: 0.76rem; color: var(--text-muted); }
+.domain-learning-note { font-size: 0.8rem; }
+.filter-controls-bar .filter-group { min-width: 0; max-width: 100%; }

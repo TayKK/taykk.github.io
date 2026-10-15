@@ -4,9 +4,9 @@
   const escape = value => String(value).replace(/[&<>"']/g, char => ({
     "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
   })[char]);
-  // Always use the complete current record, independently of catalogue filters.
-  const current = data.certifications.filter(c => c.category !== "course" && window.getCredentialStatus(c) === "active");
-  const asAt = new Intl.DateTimeFormat("en-SG", { timeZone: "Asia/Singapore", day: "numeric", month: "short", year: "numeric" }).format(new Date());
+  const container = document.getElementById("profile-content");
+  if (!container || !data) return;
+  const printOnly = container.classList.contains("print-only");
   function credentialList(credentials) {
     return credentials.map(c => {
       const title = c.credentialUrl ? `<a href="${escape(c.credentialUrl)}">${escape(c.title)}</a>` : escape(c.title);
@@ -15,12 +15,17 @@
       return `<li data-credential-id="${escape(c.id)}"><strong>${title}</strong><p class="profile-meta">${escape(c.issuer)}</p><p class="profile-meta">Issued ${issued} · ${expiry}</p></li>`;
     }).join("");
   }
-  document.getElementById("profile-content").innerHTML = `
+  function renderProfile() {
+    // Refresh validity at print time, independently of the catalogue's filters.
+    const current = data.certifications.filter(c => c.category !== "course" && window.getCredentialStatus(c) === "active");
+    const asAt = new Intl.DateTimeFormat("en-SG", { timeZone: "Asia/Singapore", day: "numeric", month: "short", year: "numeric" }).format(new Date());
+    container.innerHTML = `
     <header><h1>${escape(data.profile.name)}</h1><p class="profile-headline">${escape(data.profile.headline)}</p>
       <p>${escape(data.profile.location)} · <a href="${escape(data.profile.linkedinUrl)}">LinkedIn</a> · <a href="${escape(data.profile.githubUrl)}">GitHub</a> · <a href="${escape(data.profile.credlyUrl)}">Credly</a> · <a href="https://taykk.github.io/">taykk.github.io</a></p>
       <p class="profile-summary">${escape(data.profile.bio)}</p>
     </header>
     <section><h2>Cybersecurity experience</h2>
+      <p class="profile-meta">Ensign InfoSecurity since January 2022 · ${escape(window.getCompanyTenure())}, including my internship</p>
       ${data.workProgression.map(item => `<article><h3>${escape(item.role)}</h3><p class="profile-meta">${escape(item.company)} · ${escape(item.period)}</p><ul>${item.responsibilities.map(text => `<li>${escape(text)}</li>`).join("")}</ul></article>`).join("")}
     </section>
     <section><h2>Research</h2><article>
@@ -37,5 +42,9 @@
       <ul class="profile-credentials" id="profile-current-credentials">${credentialList(current)}</ul>
     </section>
     <footer>KK · Full portfolio and credential history: <a href="https://taykk.github.io/">taykk.github.io</a></footer>`;
-  document.getElementById("print-profile").addEventListener("click", () => window.print());
+  }
+  if (!printOnly) renderProfile();
+  window.addEventListener("beforeprint", renderProfile);
+  window.addEventListener("afterprint", () => { if (printOnly) container.replaceChildren(); });
+  document.getElementById("print-profile")?.addEventListener("click", () => window.print());
 })();

@@ -20,6 +20,12 @@ const base = process.env.PORTFOLIO_TEST_URL || 'http://127.0.0.1:8765';
     assert.equal(await page.locator('.hero-title .highlight').textContent(), 'TAY');
     assert.equal(await page.locator('.hero-title .highlight').evaluate(e => getComputedStyle(e).color), 'rgb(56, 189, 248)');
     assert.equal(await page.locator('.brand-badge').textContent(), 'KK//SEC');
+    assert.match(await page.locator('#company-tenure').textContent(), /4 years and 9 months since January 2022/);
+    assert.deepEqual(await page.evaluate(() => [
+      window.getCompanyTenure(new Date('2025-02-01T00:00:00Z')),
+      window.getCompanyTenure(new Date('2026-09-30T15:59:59Z')),
+      window.getCompanyTenure(new Date('2026-09-30T16:00:00Z'))
+    ]), ['3 years and 1 month', '4 years and 8 months', '4 years and 9 months']);
     assert.equal(await page.locator('#work-progression-container .progression-step').count(), 3);
     assert.doesNotMatch(await page.locator('body').textContent(), /RSAF|Kai Keng TAY|TK\/\/SEC|Selected Credentials/);
     assert.equal(await page.locator('#filter-cert-level, .level-badge').count(), 0);
@@ -36,6 +42,14 @@ const base = process.env.PORTFOLIO_TEST_URL || 'http://127.0.0.1:8765';
     }
     const sources = require('../assets/img/badges/sources.json');
     const credentials = await page.evaluate(() => window.PORTFOLIO_DATA.certifications);
+    const domains = await page.evaluate(() => window.PORTFOLIO_DATA.competencyRadar);
+    assert.deepEqual(await page.locator('#filter-cert-domain option').evaluateAll(nodes => nodes.slice(1).map(n => [n.value, n.textContent])), domains.map(d => [d.id, d.domain]));
+    for (const c of credentials) {
+      assert(!Object.hasOwn(c, 'domain'));
+      assert(c.domains.length > 0);
+      assert.equal(new Set(c.domains.map(d => d.id)).size, c.domains.length);
+      assert(c.domains.every(d => domains.some(domain => domain.id === d.id) && d.reason.length > 0));
+    }
     assert(credentials.every(c => !Object.hasOwn(c, 'level')));
     for (const source of sources) {
       const c = credentials.find(c => c.id === source.credentialId);
@@ -66,16 +80,36 @@ const base = process.env.PORTFOLIO_TEST_URL || 'http://127.0.0.1:8765';
     assert.equal(await page.locator('.cert-card').count(), 17);
     await page.locator('[data-cert-cat="proctored"]').click();
     await page.locator('#filter-cert-domain').selectOption('cloud');
-    assert.deepEqual(await page.locator('.cert-card').evaluateAll(nodes => nodes.map(n => n.dataset.credentialId)), ['gcp-ace', 'kcna', 'ms-azure-fund']);
+    assert.deepEqual(await page.locator('.cert-card').evaluateAll(nodes => nodes.map(n => n.dataset.credentialId)), ['gcp-ace', 'kcna', 'aws-ai', 'ms-azure-fund', 'ms-azure-ai']);
     await page.locator('#reset-cert-filters').click();
     console.log('PASS full catalogue, credential artwork, provenance, combined filters, reset, and Singapore expiry boundary');
 
-    const domains = await page.evaluate(() => window.PORTFOLIO_DATA.competencyRadar);
     for (const domain of domains) {
       await page.locator(`[data-domain="${domain.id}"]`).focus(); await page.keyboard.press('Enter');
       assert(await page.locator(`#domain-${domain.id}`).evaluate(e => e.open));
-      assert((await page.locator(`#domain-${domain.id}`).textContent()).includes(domain.nextStep));
+      assert((await page.locator(`#domain-${domain.id}`).textContent()).includes(domain.evidence));
+      const expected = credentials.filter(c => c.domains.some(d => d.id === domain.id)).map(c => c.id);
+      assert.deepEqual(await page.locator(`#domain-${domain.id} [data-domain-credential]`).evaluateAll(nodes => nodes.map(n => n.dataset.domainCredential)), expected);
+      await page.locator('#filter-cert-domain').selectOption(domain.id);
+      assert.deepEqual(await page.locator('.cert-card').evaluateAll(nodes => nodes.map(n => n.dataset.credentialId)), expected);
     }
+    await page.locator('#filter-cert-domain').selectOption('data');
+    assert.deepEqual(await page.locator('.cert-card').evaluateAll(nodes => nodes.map(n => n.dataset.credentialId)), ['proofpoint-dlp', 'cisco-cybersecurity-essentials']);
+    await page.locator('#filter-cert-domain').selectOption('ot');
+    assert.deepEqual(await page.locator('.cert-card').evaluateAll(nodes => nodes.map(n => n.dataset.credentialId)), ['opswat-cip']);
+    await page.locator('#filter-cert-domain').selectOption('iam');
+    assert.deepEqual(await page.locator('.cert-card').evaluateAll(nodes => nodes.map(n => n.dataset.credentialId)), ['gcp-ace', 'isc2-cc', 'ms-sci', 'apisec']);
+    await page.locator('[data-credential-id="apisec"] a[href="#domain-offensive"]').click();
+    assert(await page.locator('#domain-offensive').evaluate(e => e.open));
+    assert.equal(domains.find(d => d.id === 'offensive').level, 1);
+    assert.match(await page.locator('#domain-offensive').textContent(), /knowledge quiz/);
+    await page.locator('[data-cert-cat="course"]').click();
+    await page.locator('[data-cert-status="expired"]').click();
+    await page.locator('[data-filter-domain="offensive"]').click();
+    assert.equal(await page.locator('#filter-cert-domain').inputValue(), 'offensive');
+    assert.equal(await page.locator('[data-cert-cat="all"]').getAttribute('aria-pressed'), 'true');
+    assert.equal(await page.locator('[data-cert-status="all"]').getAttribute('aria-pressed'), 'true');
+    assert.deepEqual(await page.locator('.cert-card').evaluateAll(nodes => nodes.map(n => n.dataset.credentialId)), ['apisec']);
     await page.goto(base + '/#domain-offensive');
     assert(await page.locator('#domain-offensive').evaluate(e => e.open));
     assert.equal(await page.locator('#terminal-disclosure').evaluate(e => e.open), false);
@@ -117,6 +151,23 @@ const base = process.env.PORTFOLIO_TEST_URL || 'http://127.0.0.1:8765';
     assert.equal(await page.locator('#primary-navigation').evaluate(e => getComputedStyle(e).position), 'static');
     console.log('PASS 320–1440px layouts, mobile menu close/Escape, and desktop resize');
 
+    // Native homepage printing must use the same current-only profile, even
+    // while the online catalogue is displaying completed courses.
+    await page.locator('[data-cert-cat="course"]').click();
+    await page.evaluate(() => window.dispatchEvent(new Event('beforeprint')));
+    await page.emulateMedia({media:'print'});
+    assert.equal(await page.locator('[data-cert-cat="course"]').isVisible(), false);
+    assert.equal(await page.locator('#profile-content').isVisible(), true);
+    assert.equal(await page.locator('#profile-current-credentials li').count(), 13);
+    assert.doesNotMatch(await page.locator('#profile-content').textContent(), /Completed courses|Google IT Support|Cybersecurity Essentials|Autopsy & Cyber Triage/);
+    const homepagePrintIds = await page.locator('#profile-current-credentials li').evaluateAll(nodes => nodes.map(n => n.dataset.credentialId).sort());
+    await page.pdf({path:'/tmp/kk-homepage-print.pdf', preferCSSPageSize:true});
+    await page.evaluate(() => window.dispatchEvent(new Event('afterprint')));
+    await page.emulateMedia({media:'screen'});
+    assert.equal(await page.locator('#profile-content').textContent(), '');
+    assert.equal(await page.locator('.cert-card').count(), 4);
+    assert.equal(await page.locator('[data-cert-cat="course"]').getAttribute('aria-pressed'), 'true');
+
     await page.locator('[data-cert-cat="online"]').click();
     await page.locator('[data-cert-status="expired"]').click();
     await page.locator('#credential-catalog a[href="profile.html"]').click();
@@ -129,6 +180,7 @@ const base = process.env.PORTFOLIO_TEST_URL || 'http://127.0.0.1:8765';
     const expectedPrint = await page.evaluate(() => window.PORTFOLIO_DATA.certifications.filter(c => c.category !== 'course' && window.getCredentialStatus(c) === 'active').map(c => c.id).sort());
     const actualPrint = await page.locator('.profile-credentials li').evaluateAll(nodes => nodes.map(n => n.dataset.credentialId).sort());
     assert.deepEqual(actualPrint, expectedPrint);
+    assert.deepEqual(actualPrint, homepagePrintIds);
     for (const id of ['aws-ccp', 'ccna', 'proofpoint-dlp', 'opswat-cip', 'cisco-cybersecurity-essentials', 'google-it-support', 'ntuc-ml', 'basistech-autopsy']) {
       assert.equal(await page.locator(`[data-credential-id="${id}"]`).count(), 0);
     }
@@ -138,6 +190,7 @@ const base = process.env.PORTFOLIO_TEST_URL || 'http://127.0.0.1:8765';
     assert.equal(await page.locator('.profile-toolbar').isVisible(), false);
     assert.equal(await page.locator('#profile-content').isVisible(), true);
     assert.equal(await page.locator('#credentials').evaluate(e => getComputedStyle(e).breakBefore), 'page');
+    await page.pdf({path:'/tmp/kk-profile-print.pdf', preferCSSPageSize:true});
     await page.clock.setFixedTime(new Date('2027-02-01T00:00:00Z'));
     await page.reload();
     assert.equal(await page.locator('[data-credential-id="gcfe"]').count(), 0);
